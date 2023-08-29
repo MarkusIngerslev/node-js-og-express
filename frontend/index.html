@@ -9,8 +9,41 @@
         <title>My artists</title>
     </head>
     <body>
-        <header><h1>Mine kunstner</h1></header>
+        <header>
+            <h1>Mine kunstner</h1>
+        </header>
 
+        <main>
+            <section id="artists-grid" class="grid-container">
+                <!-- Create dialog form -->
+                <dialog>
+                    <form method="dialog">
+                        <h2>Create a new User</h2>
+                        <input type="text" name="name" placeholder="Type your name" required />
+                        <input type="text" name="title" placeholder="Type your title" required />
+                        <input type="email" name="mail" placeholder="Type your mail" required />
+                        <input type="url" name="image" placeholder="Paste image url" required />
+                        <button>Create User</button>
+                    </form>
+                </dialog>
+
+                <!-- Update dialog form -->
+                <dialog>
+                    <form method="dialog">
+                        <h2>Update User</h2>
+                        <input type="text" name="name" placeholder="Type your name" required />
+                        <input type="text" name="title" placeholder="Type your title" required />
+                        <input type="email" name="mail" placeholder="Type your mail" required />
+                        <input type="url" name="image" placeholder="Paste image url" required />
+                        <button>Update User</button>
+                    </form>
+                </dialog>
+            </section>
+        </main>
+
+        <footer>
+            <h1>Made by: Markus</h1>
+        </footer>
         <script src="./js/main.js" type="module"></script>
     </body>
 </html>
