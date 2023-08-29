@@ -67,14 +67,14 @@
     },
     {
         "id": 6,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
-        "genres": "",
-        "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
+        "name": "Drake",
+        "birthdate": "10/24/1986",
+        "activeSince": 2001,
+        "genres": ["Hip hop", "R&B", "Pop rap", "trap"],
+        "labels": ["OVO Sound", "Republic", "Young Money", "Cash Money"],
+        "website": "drakerelated.com",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Drake_July_2016.jpg/220px-Drake_July_2016.jpg",
+        "shortDescription": "Aubrey Drake Graham is a Canadian rapper, singer, and songwriter. An influential figure in contemporary popular music, Drake has been credited for popularizing singing and R&B sensibilities in hip hop"
     },
     {
         "id": 7,
