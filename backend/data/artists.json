@@ -56,14 +56,14 @@
     },
     {
         "id": 5,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
-        "genres": "",
-        "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
+        "name": "Frank Ocean",
+        "birthdate": "10/28/1987",
+        "activeSince": 2005,
+        "genres": ["Alternative R&B", "Hip hop", "Pop", "psychedelic soul", "avant-soul"],
+        "labels": ["Blonded", "Def Jam", "RedZone"],
+        "website": "blonded.co",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Frank_Ocean_2022_Blonded.jpg/220px-Frank_Ocean_2022_Blonded.jpg",
+        "shortDescription": "Christopher Francis Ocean is an American singer, songwriter, and rapper. His works are noted by music critics for featuring avant-garde styles and introspective, elliptical lyrics. Ocean has won two Grammy Awards and a Brit Award for International Male Solo Artist among other accolades, and his two studio albums have been listed on Rolling Stone's 500 Greatest Albums of All Time."
     },
     {
         "id": 6,
