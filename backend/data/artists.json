@@ -75,38 +75,5 @@
         "website": "drakerelated.com",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Drake_July_2016.jpg/220px-Drake_July_2016.jpg",
         "shortDescription": "Aubrey Drake Graham is a Canadian rapper, singer, and songwriter. An influential figure in contemporary popular music, Drake has been credited for popularizing singing and R&B sensibilities in hip hop"
-    },
-    {
-        "id": 7,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
-        "genres": "",
-        "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
-    },
-    {
-        "id": 8,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
-        "genres": "",
-        "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
-    },
-    {
-        "id": 9,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
-        "genres": "",
-        "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
     }
 ]
