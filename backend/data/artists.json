@@ -34,14 +34,14 @@
     },
     {
         "id": 3,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
+        "name": "Rihannah",
+        "birthdate": "02/20/1988",
+        "activeSince": 2003,
         "genres": "",
         "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
+        "website": "http://rihanna.com/",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Rihanna_Fenty_2018.png",
+        "shortDescription": "Robyn Rihanna Fenty is a Barbadian singer, songwriter, businesswoman, and actress. She is widely regarded as one of the most prominent singers of the 21st century."
     },
     {
         "id": 4,
