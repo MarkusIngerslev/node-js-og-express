@@ -1,5 +1,105 @@
 [
     {
+        "id": 0,
+        "name": "Shakira",
+        "birthdate": "02/02/1977",
+        "activeSince": 1990,
+        "genres": ["Pop", "Rock", "Latin"],
+        "labels": ["Columbia", "Epic", "RCA", "Sony Latin"],
+        "website": "https://shakira.com/",
+        "image": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-puiun5ZGVa4%2FT-E_FCt0BYI%2FAAAAAAAAB5A%2FyTp9dXxpT4s%2Fs1600%2Fshakira-poster4-HQ-MYSHAKIBLOG.jpg&f=1&nofb=1&ipt=7049a6649fafbf470ce5c8dea8514f6037e305246369e8b0615e2d3a4ad38f56&ipo=images",
+        "shortDescription": "Shakira Isabel Mebarak Ripoll, known mononymously as Shakira, is a Colombian singer and songwriter. Born and raised in Barranquilla, she has been referred to as the 'Queen of Latin Music' and has been praised for her musical versatility. She made her recording debut with Sony Music Colombia at the age of 13."
+    },
+    {
+        "id": 1,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 2,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 3,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 4,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 5,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 6,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 7,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 8,
+        "name": "",
+        "birthdate": 0,
+        "activeSince": 0,
+        "genres": "",
+        "labels": "",
+        "website": "url",
+        "image": "url/image",
+        "shortDescription": ""
+    },
+    {
+        "id": 9,
         "name": "",
         "birthdate": 0,
         "activeSince": 0,
