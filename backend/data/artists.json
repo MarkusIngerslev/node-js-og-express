@@ -23,14 +23,14 @@
     },
     {
         "id": 2,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
-        "genres": "",
-        "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
+        "name": "Jack Harlow",
+        "birthdate": "03/13/1998",
+        "activeSince": 2015,
+        "genres": ["Hip hop", "Pop rap"],
+        "labels": ["Generation Now", "Atlantic", "SonaBLAST"],
+        "website": "https://www.jackharlow.us/",
+        "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.SsspWvAUdEbpXK33UkLrZwHaJL%26pid%3DApi&f=1&ipt=143c05344ad80f3749d6ce71653af5f6505721619a3f0d2f2d32107c8fd986a0&ipo=images",
+        "shortDescription": "Jackman Thomas Harlow is an American rapper, singer and actor from Louisville, Kentucky. His career started in 2015 with the release of several EPs and mixtapes before he was signed to Don Cannon and DJ Drama's record label Generation Now in 2018, an imprint of Atlantic Records."
     },
     {
         "id": 3,
