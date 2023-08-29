@@ -37,22 +37,22 @@
         "name": "Rihannah",
         "birthdate": "02/20/1988",
         "activeSince": 2003,
-        "genres": "",
-        "labels": "",
+        "genres": ["Pop", "R&B", "reggae", "Hip hop", "EDM"],
+        "labels": ["Roc Nation", "Def Jam", "SRP", "Westbury Road"],
         "website": "http://rihanna.com/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Rihanna_Fenty_2018.png",
         "shortDescription": "Robyn Rihanna Fenty is a Barbadian singer, songwriter, businesswoman, and actress. She is widely regarded as one of the most prominent singers of the 21st century."
     },
     {
         "id": 4,
-        "name": "",
-        "birthdate": 0,
-        "activeSince": 0,
-        "genres": "",
-        "labels": "",
-        "website": "url",
-        "image": "url/image",
-        "shortDescription": ""
+        "name": "Ellie goulding",
+        "birthdate": "30/12/1986",
+        "activeSince": 2009,
+        "genres": ["Electropop", "Synth-pop", "Indie pop", "Folktronica"],
+        "labels": ["Polydor", "Neon gold", "Cherrytree", "Interscope"],
+        "website": "http://elliegoulding.com/",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ellie_Goulding_-_Global_Citizen_Festival_Hamburg_07.jpg/220px-Ellie_Goulding_-_Global_Citizen_Festival_Hamburg_07.jpg",
+        "shortDescription": "English singer Ellie Goulding has released five studio albums, two remix albums, eight extended plays, 45 singles, 11 promotional singles and 43 music videos. As of March 2020, Goulding had sold 15 million albums and 102 million singles worldwide."
     },
     {
         "id": 5,
