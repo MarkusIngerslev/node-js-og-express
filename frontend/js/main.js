@@ -23,18 +23,18 @@ async function updateArtistsGrid() {
 
 // READ (GET) all artists from local node.js (database/backend)
 async function readArtists() {
-    const res = await fetch(`${endpoint}/artists`);
-    const data = await res.json();
+    const response = await fetch(`${endpoint}/artists`);
+    const data = await response.json();
     return data;
 }
 
 // Create HTML and display all users from given list
-function displayUsers(list) {
+function displayArtists(list) {
     // reset <section id="users-grid" class="grid-container">...</section>
     document.querySelector("#artists-grid").innerHTML = "";
     //loop through all users and create an article with content for each
     for (const artist of list) {
-        document.querySelector("#users-grid").insertAdjacentHTML(
+        document.querySelector("#artists-grid").insertAdjacentHTML(
             "beforeend",
             /*html*/ `
             <article>
@@ -49,10 +49,10 @@ function displayUsers(list) {
         `
         );
         document
-            .querySelector("#users-grid article:last-child .btn-delete-user")
+            .querySelector("#artists-grid article:last-child .btn-delete-user")
             .addEventListener("click", () => deleteUser(artist.id));
         document
-            .querySelector("#users-grid article:last-child .btn-update-user")
+            .querySelector("#artists-grid article:last-child .btn-update-user")
             .addEventListener("click", () => selectUser(artist));
     }
 }
