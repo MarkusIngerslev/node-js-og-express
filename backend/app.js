@@ -19,7 +19,8 @@ app.get("/", async (req, res) => {
     res.send(`Main page for node.js 👍`);
 });
 
-// ===== ROUTE show Artist ===== //
+// ===== Show artists ===== //
+// ROUTE "/artists" - GET
 app.get("/artists", async (req, res) => {
     const data = await fs.readFile("./data/artists.json");
     const artist = JSON.parse(data);
@@ -27,7 +28,8 @@ app.get("/artists", async (req, res) => {
     res.json(artist);
 });
 
-// ===== Create Artists ===== //
+// ===== Create artists ===== //
+// ROUTE "/artists" - POST
 app.post("/artists", async (req, res) => {
     // constant for den nye artist
     const newArtist = req.body;
@@ -45,9 +47,10 @@ app.post("/artists", async (req, res) => {
     res.json(artists);
 });
 
-// ===== Update Artists ===== //
+// ===== Update artists ===== //
+// ROUTE "/artists/:id" - put
 app.put("/artists/:id", async (req, res) => {
-    // const til at gemme den givene artist id
+    // const til at gemme den givene artists id
     const id = Number(req.params.id);
     // console.log(id);
 
@@ -74,4 +77,20 @@ app.put("/artists/:id", async (req, res) => {
     fs.writeFile("./data/artists.json", JSON.stringify(artists));
     // send tilbage den nye database
     res.json(artists);
+});
+
+// ===== Delete artists ===== //
+// ROUTE "/artists/:id" - DELETE
+app.delete("/artists/:id", async (req, res) => {
+    // const til at gemme den givene artists id
+    const id = Number(req.params.id);
+
+    // indlæs nuværende artister i databasen
+    const data = await fs.readFile("./data/artists.json");
+    const artists = JSON.parse(data);
+
+    // filtrer alle artister der ikke har et id der matcher den, der er blevet sendt
+    const newArtists = artists.filter((artist) => artist.id !== id);
+    // overskriv database filen med de artister der ikke matcher det sendte id
+    fs.writeFile("./data/artists.json", JSON.stringify(newArtists));
 });
