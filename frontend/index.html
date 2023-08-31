@@ -21,14 +21,72 @@
 
         <!-- Create dialog form -->
         <dialog id="create-artist-dialog">
-            <form method="dialog">
-                <h2>Create a new User</h2>
-                <input type="text" name="name" placeholder="Type your name" required />
-                <input type="text" name="title" placeholder="Type your title" required />
-                <input type="email" name="mail" placeholder="Type your mail" required />
-                <input type="url" name="image" placeholder="Paste image url" required />
-                <button>Create User</button>
-                <button>Close</button>
+            <form id="create-artist-form" method="dialog" autocomplete="on">
+                <h2>Create a new Artist</h2>
+
+                <!-- fieldset for information omkring kunstneren -->
+                <fieldset>
+                    <legend>Omkring kunstneren</legend>
+                    <!-- navn -->
+                    <label for="new-name"
+                        >Kunstner navn:
+                        <input type="text" name="name" id="new-name" placeholder="type in the artists name" required
+                    /></label>
+
+                    <!-- fødselsdag -->
+                    <label for="new-birthday"
+                        >Deres fødselsdag:
+                        <input type="text" name="birthday" id="new-birthday" placeholder="birthday DD/MM/YYYY" required
+                    /></label>
+
+                    <!-- image -->
+                    <label for="new-image"
+                        >Et billed af dem:
+                        <input type="url" name="image" id="new-image" placeholder="paste in a url image link" required
+                    /></label>
+
+                    <!-- website -->
+                    <label for="new-website"
+                        >Kunstnerens hjemmeside:
+                        <input type="url" name="website" id="new-website" placeholder="paste in a url link"
+                    /></label>
+                </fieldset>
+
+                <!-- fieldset for information omkring kunstnerens musik -->
+                <fieldset>
+                    <legend>Omkring deres musik</legend>
+                    <!-- activeSince -->
+                    <label for="new-activeSince"
+                        >Aktive siden:
+                        <input type="number" name="activeSince" id="new-activeSince" placeholder="type in YYYY "
+                    /></label>
+
+                    <!-- stillActive -->
+                    <label for="new-stillActive"
+                        >Stadig aktiv?
+                        <select name="stillActive" id="new-activeSince">
+                            <option value="true">Ja</option>
+                            <option value="false">Nej</option>
+                        </select></label
+                    >
+
+                    <!-- genres -->
+                    <label for="new-genres">Genres: ###</label>
+
+                    <!-- labels -->
+                    <label for="new-labels">Labels: ##</label>
+
+                    <!-- shortDescription -->
+                    <label for="new-description"
+                        >Kort beskrivelse:
+                        <input type="text" name="description" id="new-description" placeholder="short description"
+                    /></label>
+                </fieldset>
+                <!-- div for custom styling af knapper -->
+                <div>
+                    <button>Create User</button>
+                    <button id="close-dialog-btn">Close</button>
+                </div>
             </form>
         </dialog>
 
@@ -46,6 +104,9 @@
 
         <!-- dialog for detail view -->
 
+        <!-- sorting / filtrering -->
+
+        <!-- Footer  -->
         <footer>
             <h1>Made by: Markus</h1>
         </footer>
