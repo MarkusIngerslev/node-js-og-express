@@ -5,17 +5,22 @@ let selectedUser;
 
 // ===== Opstart af app ===== //
 
+// load window og kald funktion initApp
 window.addEventListener("load", initApp);
 
+// funktion der igang sætter programmet
 function initApp() {
     // update grid view for artists
     updateArtistsGrid();
 
     // To do, tilføj eventlistner for create kunstner
+    // event listeners for inputs
+    document
+        .querySelector("#create-artist-btn")
+        .addEventListener("click", () => document.querySelector("#create-artist-dialog").showModal());
 }
 
 // ===== READ ===== //
-
 async function updateArtistsGrid() {
     const artist = await readArtists();
     displayArtists(artist);
