@@ -26,3 +26,21 @@ app.get("/artists", async (req, res) => {
 
     res.json(artist);
 });
+
+// ===== Create Artists ===== //
+app.post("/artists", async (req, res) => {
+    // constant for den nye artist
+    const newArtist = req.body;
+    // lav unik id for new artist
+    newArtist.id = Number(new Date().getTime());
+
+    // load nuværende database af artists
+    const data = await fs.readFile("./data/artists.json");
+    const artists = JSON.parse(data);
+
+    artists.push(newArtist);
+    fs.writeFile("./data/artists.json", JSON.stringify(artists));
+    console.log(`Nu artist i databasen: ${newArtist}`);
+
+    res.json(artists);
+});
