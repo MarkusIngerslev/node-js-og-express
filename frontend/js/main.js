@@ -1,7 +1,7 @@
 "use strict";
 // ===== Global Variabler ===== //
 const endpoint = "http://localhost:3333";
-let selectedUser;
+let selectedArtist;
 
 // ===== Opstart af app ===== //
 
@@ -13,19 +13,33 @@ function initApp() {
     // update grid view for artists
     updateArtistsGrid();
 
-    // To do, tilføj eventlistner for create kunstner
-    // event listeners for inputs
+    // event listeners
+    initEventlisteners();
+}
+
+function initEventlisteners() {
+    // eventlistener for at åbne og reset create dialog
     document.querySelector("#create-artist-btn").addEventListener("click", () => {
         document.querySelector(`#create-artist-form`).reset(); // Nulstiller formularen
         // åbner dialog vinduet når create-artist knap klikkes
         document.querySelector("#create-artist-dialog").showModal();
     });
-    // eventlistener for close knap i create form
+
+    // eventlistener for at lukke create dialog
     document
-        .querySelector("#close-dialog-btn")
+        .querySelector("#close-create-dialog-btn")
         .addEventListener("click", () => document.querySelector("#create-artist-dialog").close());
+
+    // eventlistener for at lukke update dialog
+    document
+        .querySelector("#close-update-dialog-btn")
+        .addEventListener("click", () => document.querySelector("#update-artist-dialog").close());
+
     // eventlistener for submit i create-form
     document.querySelector("#create-artist-form").addEventListener("submit", createArtist);
+
+    // eventlistener for submit i update-form
+    document.querySelector("#update-artist-form").addEventListener("submit", updateArtist);
 }
 
 // ===== READ ===== //
@@ -41,11 +55,10 @@ async function readArtists() {
     return data;
 }
 
-// Create HTML and display all users from given list
+// Create HTML and display all artists from given list
 function displayArtists(list) {
-    // reset <section id="users-grid" class="grid-container">...</section>
     document.querySelector("#artists-grid").innerHTML = "";
-    //loop through all users and create an article with content for each
+    //loop through all artists and create an article with content for each
     for (const artist of list) {
         document.querySelector("#artists-grid").insertAdjacentHTML(
             "beforeend",
@@ -55,18 +68,18 @@ function displayArtists(list) {
                 <h2>${artist.name}</h2>
                 <p>${artist.birthdate}</p>
                  <div class="btns">
-                    <button class="btn-update-user">Update</button>
-                    <button class="btn-delete-user">Delete</button>
+                    <button class="btn-update-artist">Update</button>
+                    <button class="btn-delete-artist">Delete</button>
                 </div>
             </article>
         `
         );
         document
-            .querySelector("#artists-grid article:last-child .btn-delete-user")
-            .addEventListener("click", () => deleteUser(artist.id));
+            .querySelector("#artists-grid article:last-child .btn-delete-artist")
+            .addEventListener("click", () => deleteArtist(artist.id));
         document
-            .querySelector("#artists-grid article:last-child .btn-update-user")
-            .addEventListener("click", () => selectUser(artist));
+            .querySelector("#artists-grid article:last-child .btn-update-artist")
+            .addEventListener("click", () => selectArtist(artist));
     }
 }
 
@@ -75,7 +88,7 @@ function displayArtists(list) {
 async function createArtist(event) {
     event.preventDefault();
 
-    // tjek om stillAktiv er sat til ja or nej
+    // tjek om stillAktiv er sat til ja eller nej
     let stillActive = false;
     if (event.target.stillActive.value == "true") {
         stillActive = true;
@@ -105,6 +118,69 @@ async function createArtist(event) {
     });
 
     // tjek response
+    if (response.ok) {
+        // if succes, update view grid
+        updateArtistsGrid();
+    }
+}
+
+// ===== UPDATE ===== //
+// Udfyld dialog vindu med given artists oplysninger
+function selectArtist(artist) {
+    document.querySelector("#update-artist-form").reset();
+    // sætter global variabel
+    selectedArtist = artist;
+
+    // sæt form input felter til den givende artist data
+    const form = document.querySelector("#update-artist-form");
+    // omkring kunstner
+    form.name.value = artist.name;
+    form.birthday.value = artist.birthdate;
+    form.image.value = artist.image;
+    form.website.value = artist.website;
+    // omkring musik
+    form.activeSince.value = artist.activeSince;
+    form.stillActive.value = artist.stillActive;
+    // tilføj genres
+    // tilføj labels
+    form.description.value = artist.shortDescription;
+
+    // vis dialog vindu
+    document.querySelector("#update-artist-dialog").showModal();
+}
+
+// Update (PUT) artist til Node.js (Database)
+async function updateArtist(event) {
+    event.preventDefault();
+
+    // tjek om stillAktiv er sat til ja eller nej
+    let stillActive = false;
+    if (event.target.stillActive.value == "true") {
+        stillActive = true;
+    }
+
+    // update artist
+    // sæt en ny artist ud fra form ændringer
+    const artistToUpdate = {
+        name: event.target.name.value,
+        birthdate: event.target.birthday.value,
+        activeSince: Number(event.target.activeSince.value),
+        // genres: event.target.genres.value,
+        // labels: event.target.labels.value,
+        website: event.target.website.value,
+        image: event.target.image.value,
+        shortDescription: event.target.description.value,
+        stillActive: Boolean(stillActive),
+    };
+    const artistAsJson = JSON.stringify(artistToUpdate);
+    const response = await fetch(`${endpoint}/artists/${selectedArtist.id}`, {
+        method: "PUT",
+        body: artistAsJson,
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
     if (response.ok) {
         // if succes, update view grid
         updateArtistsGrid();
