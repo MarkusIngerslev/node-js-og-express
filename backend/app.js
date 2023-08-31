@@ -21,10 +21,6 @@ app.get("/", async (req, res) => {
 
 // ===== ROUTE show Artist ===== //
 app.get("/artists", async (req, res) => {
-    // sæt statuskode og overskrift for responsen
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/json");
-
     const data = await fs.readFile("./data/artists.json");
     const artist = JSON.parse(data);
 
