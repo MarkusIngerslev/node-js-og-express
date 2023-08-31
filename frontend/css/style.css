@@ -51,7 +51,7 @@ header {
     background-color: var(--green);
     color: var(--text-color-light);
     padding: 13.5px;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -75,7 +75,7 @@ main {
     min-height: calc(100vh - 110px);
     background: var(--light-grey);
     animation: fadeIn 0.8s;
-    padding: 108px 0 0;
+    padding: 50px 0 0;
 }
 
 /* ---------- animations ---------- */
