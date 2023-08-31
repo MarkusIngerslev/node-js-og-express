@@ -1,0 +1,67 @@
+// ===== Programmering ===== //
+
+### === Backend === ###
+ - REST API implemnteret med Node.js og Express.js
+    - Routes med endpoint for HTTP-metoderne GET, POST, PUT/PATCH, Delete
+    - CRUD-operationer der læser og skriver til JSON-fil
+    - Det skal være muligt at kunne få både alle objekter og et objekt på baggrund af specificeret id.
+
+ - JSON-fil som datakilde
+    - Artist-objekterne i Json-listen skal bestå af minimum følgende properties:
+    {name, birthdate, activeSince, genres, labels, website, image, shortDescription}
+
+### === Frontend === ###
+ - User Interface implementeret med HTML, CSS og JavaScript
+ - Brugeren skal kunne oprette, læse, opdatere og slette data (CRUD)
+ - Filtrering og sortering på udvalgte parametere (props)
+ - Du skal kunne markere en kunstner som favorit og vise en liste over alle favoritkunstnere.
+   Du bestemmer selv, hvordan denne liste gemmes (backend, localStorage, variabel eller lignende).
+ - Anvendelse af CSS Grid, CSS Flex og/eller HTML Table samt relaterede html-elementer
+ - Kode opdelt i modules
+
+
+# --- Ekstra nødvendigheder --- #
+I skal opbygge både frontend og backend efter generelle principper som:
+ - Separation of Concerns: Så ting er adskilt så meget som muligt, I bruger forskellige funktioner/moduler 
+                           til at manipulere data og vise data.
+
+ - Loose Coupling:         Så funktioner er så uafhængige af hinanden som muligt, eller i det mindste
+                           kun har afhængigheder en vej.
+
+ - High Cohesion:          Så funktioner der arbejder med det samme er samlet så tæt som muligt,
+                           enten i closures eller i modules.
+
+// ===== Systemudvikliong ===== //
+
+ - List og gennemgå krav udra FURPS+ 
+
+I forhold til systemudvikling skal kravene til applikationen vurderes ud fra FURPS+:
+
+ - Functionality:   Applikationen skal opfylde kravene for CRUD-oprationer, filtrering, sortering og
+                    præsentation af kunstnerdata. Funktionaliteten skal være pålidelig og intuitiv.
+
+ - Usability:       Brugergrænsefladen skal være brugervenlig og nem at navigere. Alle CRUD-operationer
+                    skal være let tilgængelige, og filtrerings/sorteringsfunktionerne skal være intuitive.
+
+ - Reliability:     Applikationen skal være stabil og pålidelig. Dataintegritet og korrekt håndtering af
+                    CRUD-operationer er afgørende.
+
+ - Performance:     Applikationen skal have en acceptabel ydeevne, herunder hurtig datahentning og 
+                    responsivitet i Brugergrænsefladen.
+
+ - Supportability:  Koden skal være velstruktureret og veldokumenteret, så det er nemt for fremtidige 
+                    udviklere af vedligeholde og udvide applikationen.
+
+ +:                 Der skal også tages hensyn til andre relevante krav og overvejelser for at sikre en vellykket
+                    og implementering af applikationen. Ud over FURPS-kravene skal udviklingen og overholde
+                    generelle principper for kodestruktur, modularitet og afhængighedsstyring, herunder
+                    Separation af Concerns, Loose Coupling og High Cohesion.
+
+// ===== Selve Aflevering ===== // 
+
+I skal aflevere link til et Github repository bestående af to mapper og filer:
+
+    - Backend med backend-app (REST APP implementeret med Node.js og Express.js)
+    - Frontend med jeres frontend-app
+    - readme.md med dokumentation af hvordan man installerer og kører app'en.
+    - furps.pdf med dokumentation af funktionelle og ikke-funktionelle krav.
