@@ -44,3 +44,34 @@ app.post("/artists", async (req, res) => {
 
     res.json(artists);
 });
+
+// ===== Update Artists ===== //
+app.put("/artists/:id", async (req, res) => {
+    // const til at gemme den givene artist id
+    const id = Number(req.params.id);
+    // console.log(id);
+
+    // indlæs nuværende artister i databasen
+    const data = await fs.readFile("./data/artists.json");
+    const artists = JSON.parse(data);
+
+    // find den givende artist der skal opdateres ud fra id
+    let artistToUpdate = artists.find((artist) => artist.id === id);
+
+    // sæt alle artistens information til at være den ny sendte fra client
+    const body = req.body;
+    artistToUpdate.name = body.name;
+    artistToUpdate.birthdate = body.birthdate;
+    artistToUpdate.activeSince = body.activeSince;
+    // artistToUpdate.genres = body.genres;
+    // artistToUpdate.labels = body.labels;
+    artistToUpdate.website = body.website;
+    artistToUpdate.image = body.image;
+    artistToUpdate.shortDescription = body.shortDescription;
+    artistToUpdate.stillActive = body.stillActive;
+
+    // overskriv den "gamle" artist med den nye i databasen
+    fs.writeFile("./data/artists.json", JSON.stringify(artists));
+    // send tilbage den nye database
+    res.json(artists);
+});
