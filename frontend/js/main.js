@@ -4,7 +4,6 @@ const endpoint = "http://localhost:3333";
 let selectedArtist;
 
 // ===== Opstart af app ===== //
-
 // load window og kald funktion initApp
 window.addEventListener("load", initApp);
 
@@ -18,9 +17,11 @@ function initApp() {
 }
 
 function initEventlisteners() {
+    // ##### ===== CREATE EVENTS ===== ##### //
     // eventlistener for at åbne og reset create dialog
     document.querySelector("#create-artist-btn").addEventListener("click", () => {
         document.querySelector(`#create-artist-form`).reset(); // Nulstiller formularen
+
         // åbner dialog vinduet når create-artist knap klikkes
         document.querySelector("#create-artist-dialog").showModal();
     });
@@ -29,14 +30,14 @@ function initEventlisteners() {
     document
         .querySelector("#close-create-dialog-btn")
         .addEventListener("click", () => document.querySelector("#create-artist-dialog").close());
+    // eventlistener for submit i create-form
+    document.querySelector("#create-artist-form").addEventListener("submit", createArtist);
 
+    // ##### ===== UPDATE EVENTS ===== ##### //
     // eventlistener for at lukke update dialog
     document
         .querySelector("#close-update-dialog-btn")
         .addEventListener("click", () => document.querySelector("#update-artist-dialog").close());
-
-    // eventlistener for submit i create-form
-    document.querySelector("#create-artist-form").addEventListener("submit", createArtist);
 
     // eventlistener for submit i update-form
     document.querySelector("#update-artist-form").addEventListener("submit", updateArtist);
@@ -84,7 +85,7 @@ function displayArtists(list) {
 }
 
 // ===== CREATE ===== //
-// Create (POST) artist to node.js (Database)
+// Create (POST) artist til node.js (Database)
 async function createArtist(event) {
     event.preventDefault();
 
@@ -182,6 +183,19 @@ async function updateArtist(event) {
     });
 
     if (response.ok) {
+        // if succes, update view grid
+        updateArtistsGrid();
+    }
+}
+
+// ===== DELETE ===== //
+// Delete (DELELTE) artist gennem node.js (database)
+async function deleteArtist(id) {
+    const res = await fetch(`${endpoint}/artists/${id}`, {
+        method: "DELETE",
+    });
+
+    if (res.ok) {
         // if succes, update view grid
         updateArtistsGrid();
     }
