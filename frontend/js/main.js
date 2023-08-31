@@ -15,9 +15,17 @@ function initApp() {
 
     // To do, tilføj eventlistner for create kunstner
     // event listeners for inputs
+    document.querySelector("#create-artist-btn").addEventListener("click", () => {
+        document.querySelector(`#create-artist-form`).reset(); // Nulstiller formularen
+        // åbner dialog vinduet når create-artist knap klikkes
+        document.querySelector("#create-artist-dialog").showModal();
+    });
+    // eventlistener for close knap i create form
     document
-        .querySelector("#create-artist-btn")
-        .addEventListener("click", () => document.querySelector("#create-artist-dialog").showModal());
+        .querySelector("#close-dialog-btn")
+        .addEventListener("click", () => document.querySelector("#create-artist-dialog").close());
+    // eventlistener for submit i create-form
+    document.querySelector("#create-artist-form").addEventListener("submit", createArtist);
 }
 
 // ===== READ ===== //
@@ -59,5 +67,46 @@ function displayArtists(list) {
         document
             .querySelector("#artists-grid article:last-child .btn-update-user")
             .addEventListener("click", () => selectUser(artist));
+    }
+}
+
+// ===== CREATE ===== //
+// Create (POST) artist to node.js (Database)
+async function createArtist(event) {
+    event.preventDefault();
+
+    // tjek om stillAktiv er sat til ja or nej
+    let stillActive = false;
+    if (event.target.stillActive.value == "true") {
+        stillActive = true;
+    }
+
+    // opret en ny artist udfra form
+    const newArtist = {
+        name: event.target.name.value,
+        birthdate: event.target.birthday.value,
+        activeSince: Number(event.target.activeSince.value),
+        // genres: event.target.genres.value,
+        // labels: event.target.labels.value,
+        website: event.target.website.value,
+        image: event.target.image.value,
+        shortDescription: event.target.description.value,
+        stillActive: Boolean(stillActive),
+    };
+    // konverter newArtist til JSON
+    const artistAsJson = JSON.stringify(newArtist);
+    // send ny artist til server
+    const response = await fetch(`${endpoint}/artists`, {
+        method: "POST",
+        body: artistAsJson,
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    // tjek response
+    if (response.ok) {
+        // if succes, update view grid
+        updateArtistsGrid();
     }
 }
