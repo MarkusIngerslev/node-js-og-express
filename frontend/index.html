@@ -21,9 +21,8 @@
 
         <!-- Create dialog form -->
         <dialog id="create-artist-dialog">
+            <h2>Create a new Artist</h2>
             <form id="create-artist-form" method="dialog" autocomplete="on">
-                <h2>Create a new Artist</h2>
-
                 <!-- fieldset for information omkring kunstneren -->
                 <fieldset>
                     <legend>Omkring kunstneren</legend>
@@ -84,21 +83,89 @@
                 </fieldset>
                 <!-- div for custom styling af knapper -->
                 <div>
-                    <button>Create User</button>
-                    <button id="close-dialog-btn">Close</button>
+                    <button>Create Artist</button>
+                    <button id="close-create-dialog-btn">Close</button>
                 </div>
             </form>
         </dialog>
 
         <!-- Update dialog form -->
-        <dialog>
-            <form method="dialog">
-                <h2>Update User</h2>
-                <input type="text" name="name" placeholder="Type your name" required />
-                <input type="text" name="title" placeholder="Type your title" required />
-                <input type="email" name="mail" placeholder="Type your mail" required />
-                <input type="url" name="image" placeholder="Paste image url" required />
-                <button>Update User</button>
+        <dialog id="update-artist-dialog">
+            <h2>Update User</h2>
+            <form id="update-artist-form" method="dialog" autocomplete="on">
+                <!-- fieldset for information omkring kunstneren -->
+                <fieldset>
+                    <legend>Omkring kunstneren</legend>
+                    <!-- navn -->
+                    <label for="update-name"
+                        >Kunstner navn:
+                        <input type="text" name="name" id="update-name" placeholder="type in the artists name" required
+                    /></label>
+
+                    <!-- fødselsdag -->
+                    <label for="update-birthday"
+                        >Deres fødselsdag:
+                        <input
+                            type="text"
+                            name="birthday"
+                            id="update-birthday"
+                            placeholder="birthday DD/MM/YYYY"
+                            required
+                    /></label>
+
+                    <!-- image -->
+                    <label for="update-image"
+                        >Et billed af dem:
+                        <input
+                            type="url"
+                            name="image"
+                            id="update-image"
+                            placeholder="paste in a url image link"
+                            required
+                    /></label>
+
+                    <!-- website -->
+                    <label for="update-website"
+                        >Kunstnerens hjemmeside:
+                        <input type="url" name="website" id="update-website" placeholder="paste in a url link"
+                    /></label>
+                </fieldset>
+
+                <!-- fieldset for information omkring kunstnerens musik -->
+                <fieldset>
+                    <legend>Omkring deres musik</legend>
+                    <!-- activeSince -->
+                    <label for="update-activeSince"
+                        >Aktive siden:
+                        <input type="number" name="activeSince" id="update-activeSince" placeholder="type in YYYY "
+                    /></label>
+
+                    <!-- stillActive -->
+                    <label for="update-stillActive"
+                        >Stadig aktiv?
+                        <select name="stillActive" id="update-activeSince">
+                            <option value="true">Ja</option>
+                            <option value="false">Nej</option>
+                        </select></label
+                    >
+
+                    <!-- genres -->
+                    <label for="update-genres">Genres: ###</label>
+
+                    <!-- labels -->
+                    <label for="update-labels">Labels: ##</label>
+
+                    <!-- shortDescription -->
+                    <label for="update-description"
+                        >Kort beskrivelse:
+                        <input type="text" name="description" id="update-description" placeholder="short description"
+                    /></label>
+                </fieldset>
+                <!-- div for custom styling af knapper -->
+                <div>
+                    <button>Update Artist</button>
+                    <button id="close-update-dialog-btn">Close</button>
+                </div>
             </form>
         </dialog>
 
