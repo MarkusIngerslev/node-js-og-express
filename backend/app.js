@@ -86,11 +86,45 @@ app.delete("/artists/:id", async (req, res) => {
     const id = Number(req.params.id);
 
     // indlæs nuværende artister i databasen
-    const data = await fs.readFile("./data/artists.json");
-    const artists = JSON.parse(data);
+    const artistsData = await fs.readFile("./data/artists.json");
+    const artists = JSON.parse(artistsData);
+
+    // indlæst nuværende artister i favoriter
+    const favoritsData = await fs.readFile("./data/favorits.json");
+    const favorits = JSON.parse(favoritsData);
 
     // filtrer alle artister der ikke har et id der matcher den, der er blevet sendt
     const newArtists = artists.filter((artist) => artist.id !== id);
+    const newFavorits = favorits.filter((favorit) => favorit.id !== id);
+
     // overskriv database filen med de artister der ikke matcher det sendte id
     fs.writeFile("./data/artists.json", JSON.stringify(newArtists));
+    fs.writeFile("./data/favorits.json", JSON.stringify(newFavorits));
+});
+
+// ===== Favorit artists ===== //
+// ROUTE "/favorits" - GET
+app.get("/favorits", async (req, res) => {
+    const data = await fs.readFile("./data/favorits.json");
+    const artist = JSON.parse(data);
+
+    res.json(artist);
+});
+
+// ROUTE "/favorits" - POST
+app.post("/favorits", async (req, res) => {
+    // constant for den nye artist
+    const newArtist = req.body;
+    // lav unik id for new artist
+    newArtist.id = Number(new Date().getTime());
+
+    // load nuværende database af artists
+    const data = await fs.readFile("./data/favorits.json");
+    const artists = JSON.parse(data);
+
+    artists.push(newArtist);
+    fs.writeFile("./data/favorits.json", JSON.stringify(artists));
+    console.log(`Nu artist i databasen favorit ${newArtist.name}`);
+
+    res.json(artists);
 });
