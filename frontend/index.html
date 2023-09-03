@@ -24,12 +24,20 @@
                 <fieldset>
                     <legend>Filter/sortering</legend>
                     <div id="filter-grid">
+                        <!-- Genre filter -->
                         <label for="genre-filter"
                             >Filter efter genre:
                             <input type="text" id="genre-filter" list="genre-list" placeholder="Vælg en genre"
                         /></label>
                         <datalist id="genre-list">
                             <!-- Genrer fra kunstnere -->
+                        </datalist>
+
+                        <!-- Label filter -->
+                        <label for="label-filter">Filter efter labels:</label>
+                        <input type="text" id="label-filter" list="label-list" placeholder="Vælg en label" />
+                        <datalist id="label-list">
+                            <!-- Labels fra kunstnere -->
                         </datalist>
                     </div>
                     <div id="sortering-grid"></div>

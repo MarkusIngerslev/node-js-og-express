@@ -1,5 +1,5 @@
 // ===== Imports ===== //
-import { trimAndCapitalize, updateDatalistGenres } from "./helpers.js";
+import { trimAndCapitalize, updateDatalistGenres, updateDatalistLabels } from "./helpers.js";
 
 // ===== Global Variabler ===== //
 const endpoint = "http://localhost:3333";
@@ -52,23 +52,31 @@ function initEventlisteners() {
     document.querySelector("#genre-filter").addEventListener("input", () => {
         updateArtistsGrid();
     });
+    document.querySelector("#label-filter").addEventListener("input", updateArtistsGrid);
 }
 
 // ===== READ ===== //
 async function updateArtistsGrid() {
     const artistData = await readArtists();
     const genreFilter = document.querySelector("#genre-filter").value;
+    const labelFilter = document.querySelector("#label-filter").value;
 
-    // Hvis filteret er tomt, vis alle kunstnere
-    if (!genreFilter) {
+    // Hvis både genre- og etiketfiltrene er tomme, vis alle kunstnere
+    if (!genreFilter && !labelFilter) {
         displayArtists(artistData);
     } else {
-        // Filtrer kunstnere baseret på valgt genre
-        const filteredArtists = artistData.filter((artist) => artist.genres.includes(genreFilter));
+        // Filtrer kunstnere baseret på valgt genre og/eller etiket
+        const filteredArtists = artistData.filter((artist) => {
+            const matchGenre = !genreFilter || artist.genres.includes(genreFilter);
+            const matchLabel = !labelFilter || artist.labels.includes(labelFilter);
+            return matchGenre && matchLabel;
+        });
         displayArtists(filteredArtists);
     }
 
+    // Opdater datalisten for genrer og etiketter
     updateDatalistGenres(artistData);
+    updateDatalistLabels(artistData);
 }
 
 // READ (GET) all artists from local node.js (database/backend)

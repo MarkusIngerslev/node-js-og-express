@@ -22,4 +22,22 @@ function updateDatalistGenres(artistObject) {
     });
 }
 
-export { trimAndCapitalize, updateDatalistGenres };
+function updateDatalistLabels(artistObject) {
+    const datalist = document.querySelector("#label-list");
+    datalist.innerHTML = ""; // Fjern alle tidligere muligheder
+
+    const uniqueLabels = new Set();
+
+    artistObject.forEach((artist) => {
+        artist.labels.forEach((label) => {
+            if (!uniqueLabels.has(label)) {
+                uniqueLabels.add(label);
+                const option = document.createElement("option");
+                option.value = label;
+                datalist.appendChild(option);
+            }
+        });
+    });
+}
+
+export { trimAndCapitalize, updateDatalistGenres, updateDatalistLabels };
