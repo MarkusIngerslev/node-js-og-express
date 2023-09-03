@@ -6,6 +6,8 @@ function trimAndCapitalize(word) {
 // funktion til at kunne vælge mellem forskellige genres
 function updateDatalistGenres(artistObject) {
     const datalist = document.querySelector("#genre-list");
+    datalist.innerHTML = ""; // Fjern alle tidligere muligheder
+
     const uniqueGenres = new Set();
 
     artistObject.forEach((artist) => {

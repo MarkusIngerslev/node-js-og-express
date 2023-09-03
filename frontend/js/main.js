@@ -49,13 +49,26 @@ function initEventlisteners() {
 
     // ##### ===== PAGE EVENTS ===== ##### //
     document.querySelector("#different-pages").addEventListener("change", updateArtistsGrid);
+    document.querySelector("#genre-filter").addEventListener("input", () => {
+        updateArtistsGrid();
+    });
 }
 
 // ===== READ ===== //
 async function updateArtistsGrid() {
-    const artist = await readArtists();
-    displayArtists(artist);
-    updateDatalistGenres(artist);
+    const artistData = await readArtists();
+    const genreFilter = document.querySelector("#genre-filter").value;
+
+    // Hvis filteret er tomt, vis alle kunstnere
+    if (!genreFilter) {
+        displayArtists(artistData);
+    } else {
+        // Filtrer kunstnere baseret på valgt genre
+        const filteredArtists = artistData.filter((artist) => artist.genres.includes(genreFilter));
+        displayArtists(filteredArtists);
+    }
+
+    updateDatalistGenres(artistData);
 }
 
 // READ (GET) all artists from local node.js (database/backend)
