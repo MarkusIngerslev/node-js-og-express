@@ -19,11 +19,18 @@
         </header>
 
         <main>
+            <!-- sorting / filtrering -->
             <div id="filter-sorting-grid" class="filter-sorting-grid">
                 <fieldset>
                     <legend>Filter/sortering</legend>
                     <div id="filter-grid">
-                        <label for=""></label>
+                        <label for="genre-filter"
+                            >Filter efter genre:
+                            <input type="text" id="genre-filter" list="genre-list" placeholder="Vælg en genre"
+                        /></label>
+                        <datalist id="genre-list">
+                            <!-- Genrer fra kunstnere -->
+                        </datalist>
                     </div>
                     <div id="sortering-grid"></div>
                 </fieldset>
@@ -225,8 +232,6 @@
         </dialog>
 
         <!-- dialog for detail view -->
-
-        <!-- sorting / filtrering -->
 
         <!-- Footer  -->
         <footer>
