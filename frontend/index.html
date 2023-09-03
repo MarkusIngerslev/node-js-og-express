@@ -19,7 +19,16 @@
         </header>
 
         <main>
-            <section id="create-artist"></section>
+            <div id="filter-sorting-grid" class="filter-sorting-grid">
+                <fieldset>
+                    <legend>Filter/sortering</legend>
+                    <div id="filter-grid">
+                        <label for=""></label>
+                    </div>
+                    <div id="sortering-grid"></div>
+                </fieldset>
+            </div>
+
             <section id="artists-grid" class="grid-container"></section>
         </main>
 
@@ -51,7 +60,7 @@
                     <!-- website -->
                     <label for="new-website"
                         >Kunstnerens hjemmeside:
-                        <input type="url" name="website" id="new-website" placeholder="paste in a url link"
+                        <input type="url" name="website" id="new-website" placeholder="paste in a url link" required
                     /></label>
                 </fieldset>
 
@@ -61,28 +70,49 @@
                     <!-- activeSince -->
                     <label for="new-activeSince"
                         >Aktive siden:
-                        <input type="number" name="activeSince" id="new-activeSince" placeholder="type in YYYY "
+                        <input
+                            type="number"
+                            name="activeSince"
+                            id="new-activeSince"
+                            placeholder="type in YYYY "
+                            required
                     /></label>
 
                     <!-- stillActive -->
                     <label for="new-stillActive"
                         >Stadig aktiv?
-                        <select name="stillActive" id="new-activeSince">
+                        <select name="stillActive" id="new-activeSince" required>
                             <option value="true">Ja</option>
                             <option value="false">Nej</option>
                         </select></label
                     >
 
                     <!-- genres -->
-                    <label for="new-genres">Genres: ###</label>
+                    <label for="new-genres"
+                        >Genres: (Separate with kommas (,))
+                        <input type="text" name="genres" id="new-genres" placeholder="Pop, Rock & Latin" required
+                    /></label>
 
                     <!-- labels -->
-                    <label for="new-labels">Labels: ##</label>
+                    <label for="new-labels"
+                        >Labels: (Separate with kommas (,))
+                        <input
+                            type="text"
+                            name="labels"
+                            id="new-labels"
+                            placeholder="Columbia, Epic, RCA & Sony Latin"
+                            required
+                    /></label>
 
                     <!-- shortDescription -->
                     <label for="new-description"
                         >Kort beskrivelse:
-                        <input type="text" name="description" id="new-description" placeholder="short description"
+                        <input
+                            type="text"
+                            name="description"
+                            id="new-description"
+                            placeholder="short description"
+                            required
                     /></label>
                 </fieldset>
                 <!-- div for custom styling af knapper -->
@@ -131,7 +161,7 @@
                     <!-- website -->
                     <label for="update-website"
                         >Kunstnerens hjemmeside:
-                        <input type="url" name="website" id="update-website" placeholder="paste in a url link"
+                        <input type="url" name="website" id="update-website" placeholder="paste in a url link" required
                     /></label>
                 </fieldset>
 
@@ -141,28 +171,49 @@
                     <!-- activeSince -->
                     <label for="update-activeSince"
                         >Aktive siden:
-                        <input type="number" name="activeSince" id="update-activeSince" placeholder="type in YYYY "
+                        <input
+                            type="number"
+                            name="activeSince"
+                            id="update-activeSince"
+                            placeholder="type in YYYY "
+                            required
                     /></label>
 
                     <!-- stillActive -->
                     <label for="update-stillActive"
                         >Stadig aktiv?
-                        <select name="stillActive" id="update-activeSince">
+                        <select name="stillActive" id="update-activeSince" required>
                             <option value="true">Ja</option>
                             <option value="false">Nej</option>
                         </select></label
                     >
 
                     <!-- genres -->
-                    <label for="update-genres">Genres: ###</label>
+                    <label for="update-genres"
+                        >Genres: (Separate with kommas (,))
+                        <input type="text" name="genres" id="update-genres" placeholder="Pop, Rock & Latin" required
+                    /></label>
 
                     <!-- labels -->
-                    <label for="update-labels">Labels: ##</label>
+                    <label for="update-labels"
+                        >Labels: (Separate with kommas (,))
+                        <input
+                            type="text"
+                            name="labels"
+                            id="update-labels"
+                            placeholder="Columbia, Epic, RCA & Sony Latin"
+                            required
+                    /></label>
 
                     <!-- shortDescription -->
                     <label for="update-description"
                         >Kort beskrivelse:
-                        <input type="text" name="description" id="update-description" placeholder="short description"
+                        <input
+                            type="text"
+                            name="description"
+                            id="update-description"
+                            placeholder="short description"
+                            required
                     /></label>
                 </fieldset>
                 <!-- div for custom styling af knapper -->

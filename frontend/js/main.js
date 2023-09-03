@@ -111,8 +111,8 @@ async function createArtist(event) {
         name: event.target.name.value,
         birthdate: event.target.birthday.value,
         activeSince: Number(event.target.activeSince.value),
-        // genres: event.target.genres.value,
-        // labels: event.target.labels.value,
+        genres: event.target.genres.value.split(",").map(trimAndCapitalize),
+        labels: event.target.labels.value.split(",").map(trimAndCapitalize),
         website: event.target.website.value,
         image: event.target.image.value,
         shortDescription: event.target.description.value,
@@ -136,6 +136,11 @@ async function createArtist(event) {
     }
 }
 
+// funktion til at fjerne mulige mellemrum og ændre til stort forbogstav i genres og labels
+function trimAndCapitalize(word) {
+    return word.trim().replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 // ===== UPDATE ===== //
 // Udfyld dialog vindu med given artists oplysninger
 function selectArtist(artist) {
@@ -153,8 +158,8 @@ function selectArtist(artist) {
     // omkring musik
     form.activeSince.value = artist.activeSince;
     form.stillActive.value = artist.stillActive;
-    // tilføj genres
-    // tilføj labels
+    form.genres.value = artist.genres;
+    form.labels.value = artist.labels;
     form.description.value = artist.shortDescription;
 
     // vis dialog vindu
@@ -177,8 +182,8 @@ async function updateArtist(event) {
         name: event.target.name.value,
         birthdate: event.target.birthday.value,
         activeSince: Number(event.target.activeSince.value),
-        // genres: event.target.genres.value,
-        // labels: event.target.labels.value,
+        genres: event.target.genres.value.split(",").map(trimAndCapitalize),
+        labels: event.target.labels.value.split(",").map(trimAndCapitalize),
         website: event.target.website.value,
         image: event.target.image.value,
         shortDescription: event.target.description.value,
@@ -220,8 +225,8 @@ async function favoritArtist(artist) {
         name: artist.name,
         birthdate: artist.birthdate,
         activeSince: Number(artist.activeSince),
-        // genres: artist.genres,
-        // labels: artist.labels,
+        genres: artist.genres,
+        labels: artist.labels,
         website: artist.website,
         image: artist.image,
         shortDescription: artist.shortDescription,
