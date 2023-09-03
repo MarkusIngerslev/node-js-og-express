@@ -1,4 +1,6 @@
-"use strict";
+// ===== Imports ===== //
+import { trimAndCapitalize, updateDatalistGenres } from "./helpers.js";
+
 // ===== Global Variabler ===== //
 const endpoint = "http://localhost:3333";
 let selectedArtist;
@@ -14,6 +16,9 @@ function initApp() {
 
     // event listeners
     initEventlisteners();
+
+    // filter datalist
+    updateDatalistGenres([]);
 }
 
 function initEventlisteners() {
@@ -50,6 +55,7 @@ function initEventlisteners() {
 async function updateArtistsGrid() {
     const artist = await readArtists();
     displayArtists(artist);
+    updateDatalistGenres(artist);
 }
 
 // READ (GET) all artists from local node.js (database/backend)
@@ -134,11 +140,6 @@ async function createArtist(event) {
         // if succes, update view grid
         updateArtistsGrid();
     }
-}
-
-// funktion til at fjerne mulige mellemrum og ændre til stort forbogstav i genres og labels
-function trimAndCapitalize(word) {
-    return word.trim().replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 // ===== UPDATE ===== //
