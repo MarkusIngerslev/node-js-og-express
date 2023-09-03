@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "name": "bbno$",
+        "birthdate": "06/30/1995",
+        "activeSince": 2014,
+        "genres": ["Hip hop", "R&B", "electronic"],
+        "labels": ["IMPERIAL Republic Records"],
+        "website": "bbnomula.com",
+        "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp4577754.jpg&f=1&nofb=1&ipt=7f6209e335a3e38cbd663499d6c98c190c087acc1d6503938acc894fcb59a61a&ipo=images",
+        "shortDescription": "Alexander Leon Gumuchian, known professionally as bbno$, is a Canadian rapper, singer, and songwriter.",
+        "stillActive": true,
+        "id": 1693746987733
+    }
+]
