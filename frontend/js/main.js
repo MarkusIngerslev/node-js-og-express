@@ -49,10 +49,24 @@ function initEventlisteners() {
 
     // ##### ===== PAGE EVENTS ===== ##### //
     document.querySelector("#different-pages").addEventListener("change", updateArtistsGrid);
-    document.querySelector("#genre-filter").addEventListener("input", () => {
-        updateArtistsGrid();
-    });
+
+    // filter for genre
+    document.querySelector("#genre-filter").addEventListener("input", updateArtistsGrid);
+    // filter for label
     document.querySelector("#label-filter").addEventListener("input", updateArtistsGrid);
+
+    // sortering
+    document.querySelector("#sortering").addEventListener("change", () => {
+        // Hent den valgte sorteringsmulighed
+        const sortOption = document.querySelector("#sortering").value;
+
+        // Kald en sorteringsfunktion baseret på den valgte mulighed
+        if (sortOption === "name") {
+            sortByArtistName();
+        } else if (sortOption === "activeSince") {
+            sortByActiveSince();
+        }
+    });
 }
 
 // ===== READ ===== //
@@ -102,6 +116,7 @@ function displayArtists(list) {
                 <img src="${artist.image}">
                 <h2>${artist.name}</h2>
                 <p>${artist.birthdate}</p>
+                <p>${artist.activeSince}</p>
                  <div class="btns">
                     <button class="btn-update-artist">Update</button>
                     <button class="btn-delete-artist">Delete</button>
@@ -270,4 +285,29 @@ async function favoritArtist(artist) {
         // log change
         console.log(`New artist added to favorits!`);
     }
+}
+
+// ===== SORTERING ===== //
+// sortering efter navn
+async function sortByArtistName() {
+    // Hent kunstnerdata
+    const artistData = await readArtists(); // Du skal have en funktion til at hente kunstnerdata.
+
+    // Brug sort-metoden til at sortere kunstnerne efter navn
+    artistData.sort((a, b) => a.name.localeCompare(b.name));
+
+    // Opdater visningen med de sorterede kunstnere
+    displayArtists(artistData);
+}
+
+// sortering efter activeSince
+async function sortByActiveSince() {
+    // Hent kunstnerdata
+    const artistData = await readArtists(); // Du skal have en funktion til at hente kunstnerdata.
+
+    // Brug sort-metoden til at sortere kunstnerne efter navn
+    artistData.sort((a, b) => a.activeSince - b.activeSince);
+
+    // Opdater visningen med de sorterede kunstnere
+    displayArtists(artistData);
 }
