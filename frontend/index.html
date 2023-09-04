@@ -25,10 +25,8 @@
                     <legend>Filter/sortering</legend>
                     <div id="filter-grid">
                         <!-- Genre filter -->
-                        <label for="genre-filter"
-                            >Filter efter genre:
-                            <input type="text" id="genre-filter" list="genre-list" placeholder="Vælg en genre"
-                        /></label>
+                        <label for="genre-filter">Filter efter genre: </label>
+                        <input type="text" id="genre-filter" list="genre-list" placeholder="Vælg en genre" />
                         <datalist id="genre-list">
                             <!-- Genrer fra kunstnere -->
                         </datalist>
@@ -40,7 +38,14 @@
                             <!-- Labels fra kunstnere -->
                         </datalist>
                     </div>
-                    <div id="sortering-grid"></div>
+                    <div id="sortering-grid">
+                        <label for="sortering">sortering efter: </label>
+                        <select name="sortering" id="sortering">
+                            <option value="age">Alder</option>
+                            <option value="name">Alfabetisk</option>
+                            <option value="activeSince">Tid i brancen</option>
+                        </select>
+                    </div>
                 </fieldset>
             </div>
 
