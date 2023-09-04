@@ -74,6 +74,9 @@ header {
 
 /* Juster placeringen af h1 og select "pages" */
 header h1 {
+    font-family: "Roboto", sans-serif; /* Brug Roboto-skrifttypen */
+    font-weight: 700; /* Fed skrifttype */
+    font-size: 24px; /* Ændre tekststørrelsen */
     margin-left: 20px; /* Tilføj venstre margen */
 }
 
@@ -90,6 +93,51 @@ header h1 {
     padding: 10px 20px; /* Ændre størrelsen */
     border: none; /* Fjern kantlinjen */
     cursor: pointer; /* Gør markøren til en hånd, når der holdes over det */
+}
+
+/* ---------- Sorting og filter fieldset ---------- */
+/* CSS for filter/sortering-sektionen */
+#filter-sorting-grid {
+    text-align: center; /* Centrer indholdet vandret */
+}
+
+#filter-sorting-grid fieldset {
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    text-align: left; /* Venstrejuster indholdet i fieldset */
+}
+
+#filter-sorting-grid legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#filter-sorting-grid #top-left-section,
+#filter-sorting-grid #top-right-section,
+#filter-sorting-grid #bottom-left-section,
+#filter-sorting-grid #bottom-right-section {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+}
+
+/* Style for labels and inputs/selects inside sections */
+#filter-sorting-grid label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#filter-sorting-grid input[type="text"],
+#filter-sorting-grid select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--green);
+    border-radius: 3px;
+    margin-bottom: 10px;
 }
 
 /* ---------- Footer styling ---------- */

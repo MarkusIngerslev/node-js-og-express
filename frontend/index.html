@@ -7,6 +7,9 @@
         <link rel="icon" href="#" />
         <link rel="stylesheet" href="./css/style.css" />
         <title>My artists</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     </head>
     <body>
         <header>
@@ -27,22 +30,24 @@
             <div id="filter-sorting-grid" class="filter-sorting-grid">
                 <fieldset>
                     <legend>Filter/sortering</legend>
-                    <div id="filter-grid">
+                    <div id="top-left-section">
                         <!-- Genre filter -->
-                        <label for="genre-filter">Filter efter genre: </label>
+                        <label for="genre-filter">Filter efter genre:</label>
                         <input type="text" id="genre-filter" list="genre-list" placeholder="Vælg en genre" />
                         <datalist id="genre-list">
                             <!-- Genrer fra kunstnere -->
                         </datalist>
-
+                    </div>
+                    <div id="top-right-section">
                         <!-- Label filter -->
                         <label for="label-filter">Filter efter labels:</label>
                         <input type="text" id="label-filter" list="label-list" placeholder="Vælg en label" />
                         <datalist id="label-list">
                             <!-- Labels fra kunstnere -->
                         </datalist>
-
-                        <!-- Stadig activ filter -->
+                    </div>
+                    <div id="bottom-left-section">
+                        <!-- Stadig aktiv filter -->
                         <label for="stillActive">Stadig aktiv?</label>
                         <select name="stillActive" id="stillActiveFilter">
                             <option value="all">Alle</option>
@@ -50,8 +55,9 @@
                             <option value="false">Nej</option>
                         </select>
                     </div>
-                    <div id="sortering-grid">
-                        <label for="sortering">sortering efter: </label>
+                    <div id="bottom-right-section">
+                        <!-- Sortering efter -->
+                        <label for="sortering">Sortering efter:</label>
                         <select name="sortering" id="sortering">
                             <option value="nulstil">Original</option>
                             <option value="oldest-artist">Ældste artist</option>
