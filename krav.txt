@@ -13,22 +13,22 @@
 ### === Frontend === ###
  - User Interface implementeret med HTML, CSS og JavaScript                                                    ❌
  - Brugeren skal kunne oprette, læse, opdatere og slette data (CRUD)                                           ✅
- - Filtrering og sortering på udvalgte parametere (props)                                                      ❌
+ - Filtrering og sortering på udvalgte parametere (props)                                                      ✅
  - Du skal kunne markere en kunstner som favorit og vise en liste over alle favoritkunstnere.
    Du bestemmer selv, hvordan denne liste gemmes (backend, localStorage, variabel eller lignende).             ✅
- - Anvendelse af CSS Grid, CSS Flex og/eller HTML Table samt relaterede html-elementer                         ❌
- - Kode opdelt i modules                                                                                       ❌
+ - Anvendelse af CSS Grid, CSS Flex og/eller HTML Table samt relaterede html-elementer                         ✅
+ - Kode opdelt i modules                                                                                       ✅
 
 
 # --- Ekstra nødvendigheder --- #
 I skal opbygge både frontend og backend efter generelle principper som:
- - Separation of Concerns: Så ting er adskilt så meget som muligt, I bruger forskellige funktioner/moduler     ❌
+ - Separation of Concerns: Så ting er adskilt så meget som muligt, I bruger forskellige funktioner/moduler     ✅
                            til at manipulere data og vise data.
 
- - Loose Coupling:         Så funktioner er så uafhængige af hinanden som muligt, eller i det mindste          ❌
+ - Loose Coupling:         Så funktioner er så uafhængige af hinanden som muligt, eller i det mindste          ✅
                            kun har afhængigheder en vej.
 
- - High Cohesion:          Så funktioner der arbejder med det samme er samlet så tæt som muligt,               ❌
+ - High Cohesion:          Så funktioner der arbejder med det samme er samlet så tæt som muligt,               ✅
                            enten i closures eller i modules.
 
 // ===== Systemudvikliong ===== //
