@@ -40,16 +40,28 @@ async function readArtists() {
 
 // Create HTML and display all artists from given list
 function displayArtists(list) {
+    // Fjern tidligere indhold fra visningen
     document.querySelector("#artists-grid").innerHTML = "";
-    //loop through all artists and create an article with content for each
-    for (const artist of list) {
+
+    // Iterér gennem kunstnerlisten og opret HTML-elementer for hver kunstner
+    list.forEach((artist) => {
+        // Konverter fødselsdatoen til et JavaScript Date-objekt
+        const birthdate = new Date(artist.birthdate);
+
+        // Formatér fødselsdatoen som ønsket (f.eks. "2. februar 1977")
+        const formattedBirthdate = birthdate.toLocaleDateString("da-DK", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        });
+
         document.querySelector("#artists-grid").insertAdjacentHTML(
             "beforeend",
             /*html*/ `
             <article>
                 <img src="${artist.image}">
                 <h2>${artist.name}</h2>
-                <p>${artist.birthdate}</p>
+                <p>${formattedBirthdate}</p>
                 <p>${artist.activeSince}</p>
                  <div class="btns">
                     <button class="btn-update-artist">Update</button>
@@ -68,7 +80,7 @@ function displayArtists(list) {
         document
             .querySelector("#artists-grid article:last-child .btn-favorit-artist")
             .addEventListener("click", () => favoritArtist(artist));
-    }
+    });
 }
 
 // ===== SORTERING ===== //
