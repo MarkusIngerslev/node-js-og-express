@@ -8,21 +8,26 @@ async function updateArtistsGrid() {
     const artistData = await readArtists();
     const genreFilter = document.querySelector("#genre-filter").value;
     const labelFilter = document.querySelector("#label-filter").value;
+    const stillActiveFilter = document.querySelector("#stillActiveFilter").value;
 
-    // Hvis både genre- og etiketfiltrene er tomme, vis alle kunstnere
-    if (!genreFilter && !labelFilter) {
+    // Hvis både genre-, etiket- og stillActive-filtrene er tomme, vis alle kunstnere
+    if (!genreFilter && !labelFilter && stillActiveFilter === "all") {
         displayArtists(artistData);
     } else {
-        // Filtrer kunstnere baseret på valgt genre og/eller etiket
+        // Filtrer kunstnere baseret på valgt genre, etiket og stillActive
         const filteredArtists = artistData.filter((artist) => {
             const matchGenre = !genreFilter || artist.genres.includes(genreFilter);
             const matchLabel = !labelFilter || artist.labels.includes(labelFilter);
-            return matchGenre && matchLabel;
+            const matchStillActive =
+                stillActiveFilter === "all" ||
+                (stillActiveFilter === "true" && artist.stillActive) ||
+                (stillActiveFilter === "false" && !artist.stillActive);
+            return matchGenre && matchLabel && matchStillActive;
         });
         displayArtists(filteredArtists);
     }
 
-    // Opdater datalisten for genrer og etiketter
+    // Opdater datalisterne for genrer og etiketter
     updateDatalistGenres(artistData);
     updateDatalistLabels(artistData);
 }
@@ -91,7 +96,7 @@ function sortCheck() {
 
     // Kald en sorteringsfunktion baseret på den valgte mulighed
     if (sortOption === "nulstil") {
-        resetSortingButton();
+        resetSortingOption();
     } else if (sortOption === "oldest-artist" || sortOption === "youngest-artist") {
         sortByBirthdate(sortOption);
     } else if (sortOption === "name") {
@@ -145,7 +150,7 @@ async function sortByActiveSince(sortValue) {
     displayArtists(artistData);
 }
 
-async function resetSortingButton() {
+async function resetSortingOption() {
     // Hent Kunstnerdata
     const artistData = await readArtists();
 

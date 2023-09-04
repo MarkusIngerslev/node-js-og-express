@@ -51,6 +51,8 @@ function initEventlisteners() {
     document.querySelector("#genre-filter").addEventListener("input", updateArtistsGrid);
     // filter for label
     document.querySelector("#label-filter").addEventListener("input", updateArtistsGrid);
+    // filter for stadig aktiv
+    document.querySelector("#stillActiveFilter").addEventListener("change", updateArtistsGrid);
 
     // sortering check
     document.querySelector("#sortering").addEventListener("change", sortCheck);
