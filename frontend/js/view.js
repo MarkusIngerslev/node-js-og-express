@@ -83,13 +83,15 @@ function sortCheck() {
         sortByArtistName();
     } else if (sortOption === "activeSince") {
         sortByActiveSince();
+    } else if (sortOption === "nulstil") {
+        resetSortingButton();
     }
 }
 
 // sortering efter navn
 async function sortByArtistName() {
     // Hent kunstnerdata
-    const artistData = await readArtists(); // Du skal have en funktion til at hente kunstnerdata.
+    const artistData = await readArtists();
 
     // Brug sort-metoden til at sortere kunstnerne efter navn
     artistData.sort((a, b) => a.name.localeCompare(b.name));
@@ -101,12 +103,20 @@ async function sortByArtistName() {
 // sortering efter activeSince
 async function sortByActiveSince() {
     // Hent kunstnerdata
-    const artistData = await readArtists(); // Du skal have en funktion til at hente kunstnerdata.
+    const artistData = await readArtists();
 
     // Brug sort-metoden til at sortere kunstnerne efter navn
     artistData.sort((a, b) => a.activeSince - b.activeSince);
 
     // Opdater visningen med de sorterede kunstnere
+    displayArtists(artistData);
+}
+
+async function resetSortingButton() {
+    // Hent Kunstnerdata
+    const artistData = await readArtists();
+
+    // Opdater visningen med de oprindelige kunstnere
     displayArtists(artistData);
 }
 

@@ -1,7 +1,9 @@
+// ===== IMPORT ===== //
 import { endpoint } from "./main.js";
 import { trimAndCapitalize } from "./helpers.js";
 import { updateArtistsGrid } from "./view.js";
 
+// ===== Global Variabler ===== //
 let selectedArtist;
 
 // ===== CREATE ===== //
