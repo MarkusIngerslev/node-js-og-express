@@ -20,7 +20,7 @@ async function createArtist(event) {
     // opret en ny artist udfra form
     const newArtist = {
         name: event.target.name.value,
-        birthdate: event.target.birthday.value,
+        birthdate: event.target.birthDate.value,
         activeSince: Number(event.target.activeSince.value),
         genres: event.target.genres.value.split(",").map(trimAndCapitalize),
         labels: event.target.labels.value.split(",").map(trimAndCapitalize),
@@ -58,7 +58,7 @@ function selectArtist(artist) {
     const form = document.querySelector("#update-artist-form");
     // omkring kunstner
     form.name.value = artist.name;
-    form.birthday.value = artist.birthdate;
+    form.birthDate.value = artist.birthdate;
     form.image.value = artist.image;
     form.website.value = artist.website;
     // omkring musik
@@ -86,7 +86,7 @@ async function updateArtist(event) {
     // sæt en ny artist ud fra form ændringer
     const artistToUpdate = {
         name: event.target.name.value,
-        birthdate: event.target.birthday.value,
+        birthdate: event.target.birthDate.value,
         activeSince: Number(event.target.activeSince.value),
         genres: event.target.genres.value.split(",").map(trimAndCapitalize),
         labels: event.target.labels.value.split(",").map(trimAndCapitalize),
