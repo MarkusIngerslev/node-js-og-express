@@ -47,7 +47,11 @@ img {
 }
 
 /* ---------- topbar styling ---------- */
+/* Header styling */
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--green);
     color: var(--text-color-light);
     padding: 13.5px;
@@ -56,6 +60,36 @@ header {
     left: 0;
     right: 0;
     z-index: 9999;
+}
+
+.header-left {
+    margin-right: auto; /* Flyt til venstre kant */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Tilføj mellemrum mellem knap og select */
+}
+
+/* Juster placeringen af h1 og select "pages" */
+header h1 {
+    margin-left: 20px; /* Tilføj venstre margen */
+}
+
+#different-pages {
+    margin-right: 20px; /* Tilføj højre margen */
+}
+
+/* Style for knappen "Create Artist" og select "Pages" */
+#create-artist-btn,
+#different-pages {
+    background-color: var(--light-green);
+    color: var(--text-color-dark);
+    font-size: 18px; /* Ændre tekststørrelsen */
+    padding: 10px 20px; /* Ændre størrelsen */
+    border: none; /* Fjern kantlinjen */
+    cursor: pointer; /* Gør markøren til en hånd, når der holdes over det */
 }
 
 /* ---------- Footer styling ---------- */
