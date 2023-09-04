@@ -38,7 +38,6 @@ async function readArtists() {
     return data;
 }
 
-// ===== READ ===== //
 // Create HTML and display all artists from given list
 function displayArtists(list) {
     document.querySelector("#artists-grid").innerHTML = "";
@@ -79,12 +78,12 @@ function sortCheck() {
     const sortOption = document.querySelector("#sortering").value;
 
     // Kald en sorteringsfunktion baseret på den valgte mulighed
-    if (sortOption === "name") {
-        sortByArtistName();
-    } else if (sortOption === "activeSince") {
-        sortByActiveSince();
-    } else if (sortOption === "nulstil") {
+    if (sortOption === "nulstil") {
         resetSortingButton();
+    } else if (sortOption === "name") {
+        sortByArtistName();
+    } else if (sortOption === "mostTimeActive" || sortOption === "leastTimeActive") {
+        sortByActiveSince(sortOption);
     }
 }
 
@@ -101,12 +100,16 @@ async function sortByArtistName() {
 }
 
 // sortering efter activeSince
-async function sortByActiveSince() {
+async function sortByActiveSince(sortValue) {
     // Hent kunstnerdata
     const artistData = await readArtists();
 
     // Brug sort-metoden til at sortere kunstnerne efter navn
-    artistData.sort((a, b) => a.activeSince - b.activeSince);
+    if (sortValue === "mostTimeActive") {
+        artistData.sort((a, b) => a.activeSince - b.activeSince);
+    } else if (sortValue === "leastTimeActive") {
+        artistData.sort((a, b) => b.activeSince - a.activeSince);
+    }
 
     // Opdater visningen med de sorterede kunstnere
     displayArtists(artistData);
