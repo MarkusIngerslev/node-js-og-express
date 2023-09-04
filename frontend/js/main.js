@@ -1,5 +1,6 @@
 // ===== Imports ===== //
-import { trimAndCapitalize, updateDatalistGenres, updateDatalistLabels } from "./helpers.js";
+import { sortCheck, updateArtistsGrid } from "./view.js";
+import { createArtist, updateArtist, deleteArtist, favoritArtist } from "./rest.js";
 
 // ===== Global Variabler ===== //
 const endpoint = "http://localhost:3333";
@@ -16,9 +17,6 @@ function initApp() {
 
     // event listeners
     initEventlisteners();
-
-    // filter datalist
-    updateDatalistGenres([]);
 }
 
 function initEventlisteners() {
@@ -55,55 +53,11 @@ function initEventlisteners() {
     // filter for label
     document.querySelector("#label-filter").addEventListener("input", updateArtistsGrid);
 
-    // sortering
-    document.querySelector("#sortering").addEventListener("change", () => {
-        // Hent den valgte sorteringsmulighed
-        const sortOption = document.querySelector("#sortering").value;
-
-        // Kald en sorteringsfunktion baseret på den valgte mulighed
-        if (sortOption === "name") {
-            sortByArtistName();
-        } else if (sortOption === "activeSince") {
-            sortByActiveSince();
-        }
-    });
+    // sortering check
+    document.querySelector("#sortering").addEventListener("change", sortCheck);
 }
 
 // ===== READ ===== //
-async function updateArtistsGrid() {
-    const artistData = await readArtists();
-    const genreFilter = document.querySelector("#genre-filter").value;
-    const labelFilter = document.querySelector("#label-filter").value;
-
-    // Hvis både genre- og etiketfiltrene er tomme, vis alle kunstnere
-    if (!genreFilter && !labelFilter) {
-        displayArtists(artistData);
-    } else {
-        // Filtrer kunstnere baseret på valgt genre og/eller etiket
-        const filteredArtists = artistData.filter((artist) => {
-            const matchGenre = !genreFilter || artist.genres.includes(genreFilter);
-            const matchLabel = !labelFilter || artist.labels.includes(labelFilter);
-            return matchGenre && matchLabel;
-        });
-        displayArtists(filteredArtists);
-    }
-
-    // Opdater datalisten for genrer og etiketter
-    updateDatalistGenres(artistData);
-    updateDatalistLabels(artistData);
-}
-
-// READ (GET) all artists from local node.js (database/backend)
-async function readArtists() {
-    // const til at få værdi for siden
-    const showPage = document.querySelector("#different-pages").value;
-
-    // if sætning til at se om man skal vises alle artister eller kun favoriter
-    const response = await fetch(`${endpoint}/${showPage}`);
-    const data = await response.json();
-    return data;
-}
-
 // Create HTML and display all artists from given list
 function displayArtists(list) {
     document.querySelector("#artists-grid").innerHTML = "";
@@ -137,47 +91,6 @@ function displayArtists(list) {
     }
 }
 
-// ===== CREATE ===== //
-// Create (POST) artist til node.js (Database)
-async function createArtist(event) {
-    event.preventDefault();
-
-    // tjek om stillAktiv er sat til ja eller nej
-    let stillActive = false;
-    if (event.target.stillActive.value == "true") {
-        stillActive = true;
-    }
-
-    // opret en ny artist udfra form
-    const newArtist = {
-        name: event.target.name.value,
-        birthdate: event.target.birthday.value,
-        activeSince: Number(event.target.activeSince.value),
-        genres: event.target.genres.value.split(",").map(trimAndCapitalize),
-        labels: event.target.labels.value.split(",").map(trimAndCapitalize),
-        website: event.target.website.value,
-        image: event.target.image.value,
-        shortDescription: event.target.description.value,
-        stillActive: Boolean(stillActive),
-    };
-    // konverter newArtist til JSON
-    const artistAsJson = JSON.stringify(newArtist);
-    // send ny artist til server
-    const response = await fetch(`${endpoint}/artists`, {
-        method: "POST",
-        body: artistAsJson,
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-
-    // tjek response
-    if (response.ok) {
-        // if succes, update view grid
-        updateArtistsGrid();
-    }
-}
-
 // ===== UPDATE ===== //
 // Udfyld dialog vindu med given artists oplysninger
 function selectArtist(artist) {
@@ -203,111 +116,4 @@ function selectArtist(artist) {
     document.querySelector("#update-artist-dialog").showModal();
 }
 
-// Update (PUT) artist til Node.js (Database)
-async function updateArtist(event) {
-    event.preventDefault();
-
-    // tjek om stillAktiv er sat til ja eller nej
-    let stillActive = false;
-    if (event.target.stillActive.value == "true") {
-        stillActive = true;
-    }
-
-    // update artist
-    // sæt en ny artist ud fra form ændringer
-    const artistToUpdate = {
-        name: event.target.name.value,
-        birthdate: event.target.birthday.value,
-        activeSince: Number(event.target.activeSince.value),
-        genres: event.target.genres.value.split(",").map(trimAndCapitalize),
-        labels: event.target.labels.value.split(",").map(trimAndCapitalize),
-        website: event.target.website.value,
-        image: event.target.image.value,
-        shortDescription: event.target.description.value,
-        stillActive: Boolean(stillActive),
-    };
-    const artistAsJson = JSON.stringify(artistToUpdate);
-    const response = await fetch(`${endpoint}/artists/${selectedArtist.id}`, {
-        method: "PUT",
-        body: artistAsJson,
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-
-    if (response.ok) {
-        // if succes, update view grid
-        updateArtistsGrid();
-    }
-}
-
-// ===== DELETE ===== //
-// Delete (DELELTE) artist gennem node.js (database)
-async function deleteArtist(id) {
-    const res = await fetch(`${endpoint}/artists/${id}`, {
-        method: "DELETE",
-    });
-
-    if (res.ok) {
-        // if succes, update view grid
-        updateArtistsGrid();
-    }
-}
-
-// ===== FAVORIT ===== //
-
-async function favoritArtist(artist) {
-    // opret en ny artist udfra form
-    const newArtist = {
-        name: artist.name,
-        birthdate: artist.birthdate,
-        activeSince: Number(artist.activeSince),
-        genres: artist.genres,
-        labels: artist.labels,
-        website: artist.website,
-        image: artist.image,
-        shortDescription: artist.shortDescription,
-        stillActive: Boolean(artist.stillActive),
-    };
-    // konverter newArtist til JSON
-    const artistAsJson = JSON.stringify(newArtist);
-    // send ny artist til server
-    const response = await fetch(`${endpoint}/favorits`, {
-        method: "POST",
-        body: artistAsJson,
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-
-    // tjek response
-    if (response.ok) {
-        // log change
-        console.log(`New artist added to favorits!`);
-    }
-}
-
-// ===== SORTERING ===== //
-// sortering efter navn
-async function sortByArtistName() {
-    // Hent kunstnerdata
-    const artistData = await readArtists(); // Du skal have en funktion til at hente kunstnerdata.
-
-    // Brug sort-metoden til at sortere kunstnerne efter navn
-    artistData.sort((a, b) => a.name.localeCompare(b.name));
-
-    // Opdater visningen med de sorterede kunstnere
-    displayArtists(artistData);
-}
-
-// sortering efter activeSince
-async function sortByActiveSince() {
-    // Hent kunstnerdata
-    const artistData = await readArtists(); // Du skal have en funktion til at hente kunstnerdata.
-
-    // Brug sort-metoden til at sortere kunstnerne efter navn
-    artistData.sort((a, b) => a.activeSince - b.activeSince);
-
-    // Opdater visningen med de sorterede kunstnere
-    displayArtists(artistData);
-}
+export { endpoint, displayArtists };
