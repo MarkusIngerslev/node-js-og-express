@@ -1,6 +1,7 @@
 // ===== IMPORT ===== //
-import { endpoint, displayArtists } from "./main.js";
+import { endpoint } from "./main.js";
 import { updateDatalistGenres, updateDatalistLabels } from "./helpers.js";
+import { deleteArtist, favoritArtist, selectArtist } from "./rest.js";
 
 // ===== READ ===== //
 async function updateArtistsGrid() {
@@ -35,6 +36,40 @@ async function readArtists() {
     const response = await fetch(`${endpoint}/${showPage}`);
     const data = await response.json();
     return data;
+}
+
+// ===== READ ===== //
+// Create HTML and display all artists from given list
+function displayArtists(list) {
+    document.querySelector("#artists-grid").innerHTML = "";
+    //loop through all artists and create an article with content for each
+    for (const artist of list) {
+        document.querySelector("#artists-grid").insertAdjacentHTML(
+            "beforeend",
+            /*html*/ `
+            <article>
+                <img src="${artist.image}">
+                <h2>${artist.name}</h2>
+                <p>${artist.birthdate}</p>
+                <p>${artist.activeSince}</p>
+                 <div class="btns">
+                    <button class="btn-update-artist">Update</button>
+                    <button class="btn-delete-artist">Delete</button>
+                    <button class="btn-favorit-artist">Favorit</button>
+                </div>
+            </article>
+        `
+        );
+        document
+            .querySelector("#artists-grid article:last-child .btn-delete-artist")
+            .addEventListener("click", () => deleteArtist(artist.id));
+        document
+            .querySelector("#artists-grid article:last-child .btn-update-artist")
+            .addEventListener("click", () => selectArtist(artist));
+        document
+            .querySelector("#artists-grid article:last-child .btn-favorit-artist")
+            .addEventListener("click", () => favoritArtist(artist));
+    }
 }
 
 // ===== SORTERING ===== //

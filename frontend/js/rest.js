@@ -2,6 +2,8 @@ import { endpoint } from "./main.js";
 import { trimAndCapitalize } from "./helpers.js";
 import { updateArtistsGrid } from "./view.js";
 
+let selectedArtist;
+
 // ===== CREATE ===== //
 // Create (POST) artist til node.js (Database)
 async function createArtist(event) {
@@ -44,6 +46,30 @@ async function createArtist(event) {
 }
 
 // ===== UPDATE ===== //
+// Udfyld dialog vindu med given artists oplysninger
+function selectArtist(artist) {
+    document.querySelector("#update-artist-form").reset();
+    // sætter global variabel
+    selectedArtist = artist;
+
+    // sæt form input felter til den givende artist data
+    const form = document.querySelector("#update-artist-form");
+    // omkring kunstner
+    form.name.value = artist.name;
+    form.birthday.value = artist.birthdate;
+    form.image.value = artist.image;
+    form.website.value = artist.website;
+    // omkring musik
+    form.activeSince.value = artist.activeSince;
+    form.stillActive.value = artist.stillActive;
+    form.genres.value = artist.genres;
+    form.labels.value = artist.labels;
+    form.description.value = artist.shortDescription;
+
+    // vis dialog vindu
+    document.querySelector("#update-artist-dialog").showModal();
+}
+
 // Update (PUT) artist til Node.js (Database)
 async function updateArtist(event) {
     event.preventDefault();
@@ -128,4 +154,4 @@ async function favoritArtist(artist) {
     }
 }
 
-export { createArtist, updateArtist, deleteArtist, favoritArtist };
+export { createArtist, updateArtist, deleteArtist, favoritArtist, selectArtist };
