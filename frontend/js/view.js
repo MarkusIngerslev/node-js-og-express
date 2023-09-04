@@ -63,12 +63,21 @@ function displayArtists(list) {
         document.querySelector("#artists-grid").insertAdjacentHTML(
             "beforeend",
             /*html*/ `
-            <article>
-                <img src="${artist.image}">
-                <h2>${artist.name}</h2>
-                <p>${formattedBirthdate}</p>
-                <p>${artist.activeSince}</p>
-                 <div class="btns">
+            <article class="artist-article">
+                <div class="artist-image">
+                    <img src="${artist.image}" alt="${artist.name}" />
+                </div>
+                <div class="artist-details">
+                    <div class="artist-info">
+                        <h2>${artist.name}</h2>
+                        <p>${formattedBirthdate}</p>
+                        <p>Har været aktiv siden: ${artist.activeSince}</p>
+                    </div>
+                    <div class="artist-genres">
+                        <p>${artist.genres}</p>
+                    </div>
+                </div>
+                <div class="artist-buttons">
                     <button class="btn-update-artist">Update</button>
                     <button class="btn-delete-artist">Delete</button>
                     <button class="btn-favorit-artist">Favorit</button>
