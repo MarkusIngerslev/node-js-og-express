@@ -80,11 +80,29 @@ function sortCheck() {
     // Kald en sorteringsfunktion baseret på den valgte mulighed
     if (sortOption === "nulstil") {
         resetSortingButton();
+    } else if (sortOption === "oldest-artist" || sortOption === "youngest-artist") {
+        sortByBirthdate(sortOption);
     } else if (sortOption === "name") {
         sortByArtistName();
     } else if (sortOption === "mostTimeActive" || sortOption === "leastTimeActive") {
         sortByActiveSince(sortOption);
     }
+}
+
+// sortering efter alder
+async function sortByBirthdate(sortValue) {
+    // Hent kunstnerdata
+    const artistData = await readArtists();
+
+    // Brug sort-metoden til at sortere kunstnerne efter alder
+    if (sortValue === "oldest-artist") {
+        artistData.sort((a, b) => a.birthdate.localeCompare(b.birthdate));
+    } else if (sortValue === "youngest-artist") {
+        artistData.sort((a, b) => b.birthdate.localeCompare(a.birthdate));
+    }
+
+    // Opdater visningen med de sorterede kunstnere
+    displayArtists(artistData);
 }
 
 // sortering efter navn
