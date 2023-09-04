@@ -14,7 +14,7 @@
     {
         "id": 1,
         "name": "bbno$",
-        "birthdate": "1995-30-06",
+        "birthdate": "1995-06-30",
         "activeSince": 2014,
         "genres": ["Hip Hop", "R&B", "Electronic"],
         "labels": ["IMPERIAL Republic Records"],
@@ -26,7 +26,7 @@
     {
         "id": 2,
         "name": "Jack Harlow",
-        "birthdate": "1998-13-03",
+        "birthdate": "1998-03-13",
         "activeSince": 2015,
         "genres": ["Hip Hop", "Pop Rap"],
         "labels": ["Generation Now", "Atlantic", "SonaBLAST"],
@@ -38,7 +38,7 @@
     {
         "id": 3,
         "name": "Rihannah",
-        "birthdate": "1988-20-02",
+        "birthdate": "1988-02-20",
         "activeSince": 2003,
         "genres": ["Pop", "R&B", "Reggae", "Hip Hop", "EDM"],
         "labels": ["Roc Nation", "Def Jam", "SRP", "Westbury Road"],
@@ -62,7 +62,7 @@
     {
         "id": 5,
         "name": "Frank Ocean",
-        "birthdate": "1987-28-10",
+        "birthdate": "1987-10-28",
         "activeSince": 2005,
         "genres": ["Alternative R&B", "Hip Hop", "Pop", "Psychedelic Soul", "Avant-soul"],
         "labels": ["Blonded", "Def Jam", "RedZone"],
@@ -74,7 +74,7 @@
     {
         "id": 6,
         "name": "Drake",
-        "birthdate": "1986-24-10",
+        "birthdate": "1986-10-24",
         "activeSince": 2001,
         "genres": ["Hip Hop", "R&B", "Pop Rap", "Trap"],
         "labels": ["OVO Sound", "Republic", "Young Money", "Cash Money"],
