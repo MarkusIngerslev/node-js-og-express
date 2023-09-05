@@ -349,3 +349,79 @@ body {
     padding: 0 10px;
     padding-bottom: 10px; /* Juster afstanden mellem linjen og indholdet efter behov */
 }
+
+/* ---------- styling af dialog forms ---------- */
+/* styling for dialog window */
+#update-artist-dialog,
+#create-artist-dialog {
+    background-color: rgba(183, 205, 215, 1); /* Juster farve som ønsket */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Styling for dialog wrapper */
+.dialog-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Styling for top area (area 1) */
+.top-area {
+    width: 100%;
+}
+
+/* Styling for left area (area 2) and right area (area 3) */
+.side-areas {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Styling for fieldsets */
+.dialog-fieldset {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid var(--green);
+    border-radius: 5px;
+}
+
+/* Styling for labels and inputs */
+.dialog-label,
+.dialog-input,
+.dialog-select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* max witdh styling for inputs */
+.dialog-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Styling for select-elementet (midterjustering) */
+.dialog-select {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; /* Centrer teksten inden i select-elementet */
+}
+/* Styling for button area (area 4) */
+.button-area {
+    margin-top: 20px;
+}
+
+/* Styling for knapper i dialoger */
+.dialog-button {
+    background-color: var(--light-green);
+    color: var(--text-color-dark);
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.dialog-button:hover {
+    background-color: var(--green); /* Ændre farven ved hover */
+    color: var(--white); /* Ændre teksts farven ved hover */
+}
