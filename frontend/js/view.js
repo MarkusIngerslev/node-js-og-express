@@ -85,15 +85,70 @@ function displayArtists(list) {
             </article>
         `
         );
-        document
-            .querySelector("#artists-grid article:last-child .btn-delete-artist")
-            .addEventListener("click", () => deleteArtist(artist.id));
-        document
-            .querySelector("#artists-grid article:last-child .btn-update-artist")
-            .addEventListener("click", () => selectArtist(artist));
+
+        // eventlistener for detail view
+        document.querySelector("#artists-grid article:last-child").addEventListener("click", (e) => {
+            showArtistClicked(artist); // Brug en anonym funktion til at sende kunstnerobjektet som parameter
+        });
+
+        // eventlistener for knapper
+        document.querySelector("#artists-grid article:last-child .btn-delete-artist").addEventListener("click", (e) => {
+            e.stopPropagation();
+            deleteArtist(artist.id);
+        });
+        document.querySelector("#artists-grid article:last-child .btn-update-artist").addEventListener("click", (e) => {
+            e.stopPropagation();
+            selectArtist(artist);
+        });
         document
             .querySelector("#artists-grid article:last-child .btn-favorit-artist")
-            .addEventListener("click", () => favoritArtist(artist));
+            .addEventListener("click", (e) => {
+                e.stopPropagation();
+                favoritArtist(artist);
+            });
+    });
+}
+
+// show detail-view af artist
+function showArtistClicked(artist) {
+    // Konverter fødselsdatoen til et JavaScript Date-objekt
+    const birthdate = new Date(artist.birthdate);
+
+    // Formatér fødselsdatoen som ønsket (f.eks. "2. februar 1977")
+    const formattedBirthdate = birthdate.toLocaleDateString("da-DK", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+    });
+
+    let artistStillActive;
+    // sæt elementer i detail-view dialog til artistens detaljer
+    document.querySelector("#detail-view-image").src = artist.image;
+    document.querySelector("#detail-view-name").textContent = artist.name;
+    document.querySelector("#detail-view-birthdate").textContent = formattedBirthdate;
+    document.querySelector("#detail-view-activeSince").textContent = artist.activeSince;
+
+    // tjek for om en artist stadig er aktiv.
+    const artistActive = Boolean(artist.stillActive);
+    if (artistActive === true) {
+        artistStillActive = `${artist.name} is still making music`;
+    } else {
+        artistStillActive = `${artist.name} is not making music anymore`;
+    }
+
+    document.querySelector("#detail-view-stillActive").textContent = artistStillActive;
+    document.querySelector("#detail-view-genres").textContent = artist.genres;
+    document.querySelector("#detail-view-labels").textContent = artist.labels;
+    document.querySelector("#detail-view-shortDescription").textContent = artist.shortDescription;
+    document.querySelector("#detail-view-website").href = artist.website;
+
+    // åben detail-view dialog
+    const artistDialog = document.getElementById("artist-dialog");
+    artistDialog.showModal();
+
+    // tilføj eventlistener så det er muligt at lukke dialogen.
+    document.querySelector("#close-dialog").addEventListener("click", () => {
+        document.querySelector("#artist-dialog").close();
     });
 }
 

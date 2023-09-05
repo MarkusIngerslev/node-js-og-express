@@ -196,7 +196,29 @@
         </dialog>
 
         <!-- dialog for detail view -->
-
+        <dialog id="artist-dialog" class="dialog-view">
+            <div class="dialog-content">
+                <!-- Indhold fra den valgte kunstner vises her -->
+                <figure><img id="detail-view-image" /></figure>
+                <article>
+                    <h2 id="detail-view-name"></h2>
+                    <div id="detail-view-about">
+                        <p>Født d. <span id="detail-view-birthdate"></span></p>
+                        <p>Startet musik i <span id="detail-view-activeSince"></span></p>
+                        <p><span id="detail-view-stillActive"></span></p>
+                    </div>
+                    <div id="detail-view-music">
+                        <p>Genres: <span id="detail-view-genres"></span></p>
+                        <p>Labels: <span id="detail-view-labels"></span></p>
+                    </div>
+                    <div id="detail-view-more">
+                        <p>About: <span id="detail-view-shortDescription"></span></p>
+                        <a id="detail-view-website">more</a>
+                    </div>
+                </article>
+            </div>
+            <button id="close-dialog" class="dialog-close-button">Luk</button>
+        </dialog>
         <!-- Footer  -->
         <footer>
             <div class="footer-content">
