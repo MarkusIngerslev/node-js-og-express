@@ -171,9 +171,28 @@ footer {
 main {
     /*min heigh is screen heigh minus height of tab and top bar */
     min-height: calc(100vh - 110px);
-    background: var(--light-grey);
     animation: fadeIn 0.8s;
     padding: 10px 0 0;
+}
+
+/* CSS for farverig og funky baggrund */
+/* CSS for farverig og funky baggrund */
+body {
+    background: linear-gradient(135deg, #ff00ff, #ff6600, #00ccff, #ff3300, #66ff33, #ff0066);
+    background-size: 300% 300%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* ---------- animations ---------- */
@@ -218,14 +237,13 @@ main {
 /* CSS for artist-article */
 .artist-article {
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-    background-color: var(--white);
+    background-color: rgba(183, 205, 215, 0.5); /* Gør kun baggrunden gennemsigtig */
     transition: 0.5s;
     animation: fadeIn 0.5s;
     max-width: 400px;
     margin: 0 auto;
     width: 300px;
     border-radius: 10px; /* Tilføj afrundede hjørner */
-    opacity: 0.9; /* Tilføj gennemsigtighed */
     overflow: hidden; /* Skjul indhold, der overskrider artist-article */
     display: flex;
     flex-direction: column; /* Sæt indhold i kolonner */
@@ -241,10 +259,12 @@ main {
     width: 100%;
     height: auto;
     object-fit: cover;
+    opacity: 0.9;
 }
 
 /* CSS for artist-details */
 .artist-details {
+    opacity: 0.9;
     padding: 1.5em;
     flex-grow: 1; /* Udvid sektionen for at fylde pladsen */
 }
@@ -255,9 +275,11 @@ main {
     justify-content: space-between;
     padding: 1em;
     flex-shrink: 0; /* Forhindrer, at knapområdet krymper */
+    opacity: 0.9;
 }
 
 .artist-buttons button {
     flex: 1;
     margin: 0 0.5em;
+    opacity: 0.9;
 }
