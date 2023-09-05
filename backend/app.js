@@ -40,11 +40,15 @@ app.post("/artists", async (req, res) => {
     const data = await fs.readFile("./data/artists.json");
     const artists = JSON.parse(data);
 
-    artists.push(newArtist);
-    fs.writeFile("./data/artists.json", JSON.stringify(artists));
-    console.log(`Nu artist i databasen: ${newArtist}`);
-
-    res.json(artists);
+    const result = artists.find((artist) => artist.name.toLowerCase() === newArtist.name.toLowerCase());
+    if (result) {
+        res.status(409).json({ error: "This artist already exist!" });
+    } else {
+        artists.push(newArtist);
+        fs.writeFile("./data/artists.json", JSON.stringify(artists));
+        console.log(`Nu artist i databasen: ${newArtist.name}`);
+        res.json(artists);
+    }
 });
 
 // ===== Update artists ===== //
@@ -66,8 +70,8 @@ app.put("/artists/:id", async (req, res) => {
     artistToUpdate.name = body.name;
     artistToUpdate.birthdate = body.birthdate;
     artistToUpdate.activeSince = body.activeSince;
-    // artistToUpdate.genres = body.genres;
-    // artistToUpdate.labels = body.labels;
+    artistToUpdate.genres = body.genres;
+    artistToUpdate.labels = body.labels;
     artistToUpdate.website = body.website;
     artistToUpdate.image = body.image;
     artistToUpdate.shortDescription = body.shortDescription;
