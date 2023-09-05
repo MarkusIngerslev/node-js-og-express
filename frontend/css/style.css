@@ -21,10 +21,6 @@ html {
     width: 100%;
 }
 
-body {
-    margin: 0;
-}
-
 h1 {
     font-size: 2em;
     font-weight: 500;
@@ -33,11 +29,6 @@ h1 {
 }
 
 h2 {
-    font-weight: 500;
-    letter-spacing: 0.1px;
-}
-
-h3 {
     font-weight: 500;
     letter-spacing: 0.1px;
 }
@@ -176,8 +167,8 @@ main {
 }
 
 /* CSS for farverig og funky baggrund */
-/* CSS for farverig og funky baggrund */
 body {
+    margin: 0;
     background: linear-gradient(135deg, #ff00ff, #ff6600, #00ccff, #ff3300, #66ff33, #ff0066);
     background-size: 300% 300%;
     animation: gradientAnimation 15s ease infinite;
@@ -217,19 +208,19 @@ body {
 
 @media (min-width: 670px) {
     .grid-container {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1000px) {
     .grid-container {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 1300px) {
     .grid-container {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -251,7 +242,6 @@ body {
 
 .artist-article:hover {
     box-shadow: 0 8px 16px 0 var(--green);
-    opacity: 1; /* Gendan fuld gennemsigtighed ved hover */
 }
 
 /* CSS for artist-image */
@@ -259,12 +249,10 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
-    opacity: 0.9;
 }
 
 /* CSS for artist-details */
 .artist-details {
-    opacity: 0.9;
     padding: 1.5em;
     flex-grow: 1; /* Udvid sektionen for at fylde pladsen */
 }
@@ -274,12 +262,90 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 1em;
-    flex-shrink: 0; /* Forhindrer, at knapområdet krymper */
-    opacity: 0.9;
 }
 
 .artist-buttons button {
     flex: 1;
     margin: 0 0.5em;
-    opacity: 0.9;
+}
+
+/* ---------- Dialog Styling ---------- */
+/* CSS for dialog layout */
+.dialog-view {
+    background-color: rgba(0, 0, 0, 0); /* Justerer gennemsigtighed som ønsket */
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.dialog-content {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    max-width: 800px; /* Juster bredden som ønsket */
+    margin: 0 auto;
+    background-color: rgba(183, 205, 215, 1); /* Juster farve som ønsket */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.left-section {
+    flex: 1;
+    text-align: center;
+}
+
+.left-section img {
+    max-width: 250px; /* Sørg for, at billedet ikke overstiger dets container */
+    height: auto; /* Bevar billedets proportioner */
+    border-radius: 5px;
+}
+
+.right-section {
+    flex: 2;
+    padding: 20px;
+}
+
+.right-section-inner {
+    display: grid;
+    gap: 15px;
+}
+
+/* Styling for h2 (detail-view-name) */
+#detail-view-name {
+    font-size: 1.5em; /* Juster størrelse som ønsket */
+    margin-bottom: 10px;
+}
+
+/* Styling for p (detail-view-shortDescription) */
+#detail-view-shortDescription {
+    font-size: 0.9em; /* Juster størrelse som ønsket */
+}
+
+/* Centrer luk-knappen */
+.dialog-close-button {
+    margin: 0 auto;
+    display: block;
+    background-color: var(--light-green);
+    color: var(--text-color-dark);
+    font-size: 18px; /* Ændre tekststørrelsen */
+    padding: 10px 70px; /* Ændre størrelsen */
+    margin-top: 10px;
+    border: none; /* Fjern kantlinjen */
+    cursor: pointer; /* Gør markøren til en hånd, når der holdes over det */
+    border-radius: 5px; /* Tilføj afrundede hjørner */
+    transition: background-color 0.3s, color 0.3s; /* Tilføj en overgangseffekt */
+}
+
+.dialog-close-button:hover {
+    background-color: var(--green); /* Ændre farven ved hover */
+    color: var(--white); /* Ændre teksts farven ved hover */
+}
+
+/* Tilføj en stribet linje under hver div på den højre side */
+#detail-view-about,
+#detail-view-music,
+#detail-view-more {
+    border: 1px dashed rgb(38, 76, 89); /* Ændre farve og stil efter behov */
+    border-left: 1px dashed rgb(38, 76, 89); /* Ændre farve og stil efter behov */
+    border-radius: 10px;
+    padding: 0 10px;
+    padding-bottom: 10px; /* Juster afstanden mellem linjen og indholdet efter behov */
 }
