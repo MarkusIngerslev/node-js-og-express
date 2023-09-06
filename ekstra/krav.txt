@@ -11,7 +11,7 @@
     {name, birthdate, activeSince, genres, labels, website, image, shortDescription}                           ✅
 
 ### === Frontend === ###
- - User Interface implementeret med HTML, CSS og JavaScript                                                    ❌
+ - User Interface implementeret med HTML, CSS og JavaScript                                                    ✅
  - Brugeren skal kunne oprette, læse, opdatere og slette data (CRUD)                                           ✅
  - Filtrering og sortering på udvalgte parametere (props)                                                      ✅
  - Du skal kunne markere en kunstner som favorit og vise en liste over alle favoritkunstnere.
@@ -38,19 +38,19 @@ I skal opbygge både frontend og backend efter generelle principper som:
 I forhold til systemudvikling skal kravene til applikationen vurderes ud fra FURPS+:
 
  - Functionality:   Applikationen skal opfylde kravene for CRUD-operationer, filtrering, sortering og
-                    præsentation af kunstnerdata. Funktionaliteten skal være pålidelig og intuitiv.
+                    præsentation af kunstnerdata. Funktionaliteten skal være pålidelig og intuitiv.               ✅
 
  - Usability:       Brugergrænsefladen skal være brugervenlig og nem at navigere. Alle CRUD-operationer
-                    skal være let tilgængelige, og filtrerings/sorteringsfunktionerne skal være intuitive.
+                    skal være let tilgængelige, og filtrerings/sorteringsfunktionerne skal være intuitive.        ✅
 
  - Reliability:     Applikationen skal være stabil og pålidelig. Dataintegritet og korrekt håndtering af
-                    CRUD-operationer er afgørende.
+                    CRUD-operationer er afgørende.                                                                ✅
 
  - Performance:     Applikationen skal have en acceptabel ydeevne, herunder hurtig datahentning og 
-                    responsivitet i Brugergrænsefladen.
+                    responsivitet i Brugergrænsefladen.                                                           ✅
 
  - Supportability:  Koden skal være velstruktureret og veldokumenteret, så det er nemt for fremtidige 
-                    udviklere af vedligeholde og udvide applikationen.
+                    udviklere af vedligeholde og udvide applikationen.                                            ✅
 
  +:                 Der skal også tages hensyn til andre relevante krav og overvejelser for at sikre en vellykket
                     og implementering af applikationen. Ud over FURPS-kravene skal udviklingen og overholde
