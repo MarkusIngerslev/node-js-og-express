@@ -4,7 +4,7 @@
 
 # Node.js og Express.js
 
-I dette projekt har jeg lavet en frontend hjemmeside [ArtistUniverset] hvor en bruger kan tilgå forskellige artister.
+I dette projekt har jeg lavet en frontend hjemmeside Artist Universet hvor en bruger kan tilgå forskellige artister.
 Det er her mening at brugeren kan tilføje flere artister til siden, ved at udfylde en create form, hvor information omkring artisten skal indsættes.
 Det er derudover også muligt for brugeren updatere en artist, hvis nu der skulle være en ændring.
 Det er også muligt at helt fjerne en artist hvis, brugeren ikke længere følger at de ønsker at have dem mere.
@@ -12,68 +12,72 @@ Brugeren kan også gøre artisten til en favorit, hvilket gør at de nu vil frem
 
 Favorit siden og den generelle side, er to forskellige lister, så hvis man sletter en artist på den ene side, så vil de stadig fremgår på den anden.
 
-### Installation
+## Installation
 
-Der er to måder hvorpå man kan installer projektet på. Der er måden med GitHub Desktop, og clone gennem terminal.
-
-#### Terminal
+For at clone projektet så du selv kan arbejde med det, så er det vigtig at du har [git](https://git-scm.com/downloads), inden du starter. Når du har det kan du følge guiden nedenfor:
 
 1. Åben din terminal
 
 2. Naviger til den mappe, hvor du gerne vil gemme projektet ved hjælp af `cd`-kommandoen. For eksempel:
 
-```bask
+```bash
 cd din/målmappe
 ```
 
 3. Når du er i mappen du gerne vil være i skal du bruge følgende kommmando til at clone projektet fra GitHub:
 
-```bask
+```bash
 git clone https://github.com/MarkusIngerslev/node-js-og-express.git
 ```
 
 4. Du har nu clonet projektet. Hvis du ønsker at køre det clonet program kan du gøre følgende
 
-```bask
-cd /node-js-og-express code.
+```bash
+cd /node-js-og-express
 ```
 
-#### Github Desktop
+-   når du så er inde i projektet kan du skrive `code .` i terminalen for at åbne projektet i din tekst editor.
 
-Den anden metode er gennem GitHub Desktop. For at gøre det skal du starte med at fork projektet:
+## Brug af hjemmeside
 
-<div align="center">
+Når du nu har downloaded projektet og gerne vil prøve at bruge projektet, så er der lige nogle ting du først skal gøre. Først er det vigtig at du starter databasen, **da det er en lokal database stopper den med at være aktiv, sammen med at du lukker programmet**.
 
-![BilledAfForkKnap](./frontend/img/create%20a%20new%20fork.jpg)
+#### Opstart af database
 
-</div>
+For at starte databasen skal du gøre følgende:
 
-Dernæst create fork, og gem det som noget du kan huske:
+1. Åben en terminal og naviger således at du står i projket mappen.
 
-<div align="center">
+```bash
+cd C:\Users\UserName\Projects\node-js-og-express
+```
 
-![BilledAfEndeligForkKnap](./frontend/img/create%20form%20final.jpg)
+2. naviger så vider ind til backend mappen
 
-</div>
+```bash
+cd backend/
+```
 
-Åben efterfølgende projektet i Github Desktop
+3. Når du er i backend mappen kan vi starte databasen, der er to måder hvorpå dette kan gøres:
 
-<div align="center">
+```bash
+node --watch app.js
+```
 
-![BilledAfGitHubDesktop](./frontend/img/Open%20with%20GitHub%20Desktop.jpg)
+```bash
+npm start
+```
 
-</div>
+4. Nu burde du gerne i din terminal få en besked om at din server køre på en `ip`.
 
-Du kan nu åbne projektet med din tekst editor
+    Grunden til at det er muligt at starte serveren med `npm start`, er fordi der er lavet et script i package.js der køre den samme funktion som først vist.
 
-<div align="center">
+#### Opstart af hjemmeside
 
-![BilledAfProjektetIGitHubDesktop](./frontend/img/gitHub%20desktop.jpg)
+Efter at du nu har fået databasen til at køre kan du starte hjemmesiden op. Dette bliver gjort gennem brugen af extensionen [liveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
-</div>
+1. For at åbne hjemmesiden gennem live server skal du højre klikke på html filen, inde i frontend mappen. Hvorefter du så skal klikke på start liveserver.
 
-### Opstart af database
+    Et nyt browser vindu skulle gerne åbne op, med hjemmesiden for projektet.
 
-### Opstart af hjemmeside
-
-### Håndtering af favorit artister
+2. Du er nu fuldt klar til at bruge hjemmesiden, og se hvad du kan gøre!

@@ -63,5 +63,5 @@ I skal aflevere link til et Github repository bestående af to mapper og filer:
 
     - Backend med backend-app (REST APP implementeret med Node.js og Express.js)    ✅
     - Frontend med jeres frontend-app                                               ✅
-    - readme.md med dokumentation af hvordan man installerer og kører app'en.       ❌
+    - readme.md med dokumentation af hvordan man installerer og kører app'en.       ✅
     - furps.pdf med dokumentation af funktionelle og ikke-funktionelle krav.        ❌
