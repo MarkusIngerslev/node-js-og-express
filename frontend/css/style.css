@@ -2,8 +2,6 @@
 :root {
     --green: rgb(1, 22, 30);
     --light-green: rgb(89, 131, 146);
-    --light-grey: #f1f1f4;
-    --text-color-light: #f1f1f1;
     --text-color-dark: #eff6e0;
     --white: #fff;
     --font-family: "Roboto Mono", monospace;
@@ -39,7 +37,6 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: var(--green);
-    color: var(--text-color-light);
     padding: 13.5px;
     position: relative;
     top: 0;
@@ -68,6 +65,10 @@ header h1 {
     font-weight: 700; /* Fed skrifttype */
     font-size: 24px; /* Ændre tekststørrelsen */
     margin-left: 20px; /* Tilføj venstre margen */
+    background: linear-gradient(to right, #ff6600, #ffffff, #ffcc00); /* Gradient baggrund */
+    -webkit-background-clip: text; /* Gør teksten gennemsigtig */
+    color: transparent; /* Gør teksten gennemsigtig, så gradienten vises bagved */
+    background-clip: text; /* Gør teksten gennemsigtig */
 }
 
 #different-pages {
